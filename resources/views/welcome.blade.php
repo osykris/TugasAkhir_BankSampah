@@ -17,7 +17,7 @@ SEMANDING
     <br />
     untuk kami beli bagi masyarakat Kecamatan Kanigoro, Kabupaten Blitar.
   </p>
-  <a href="#popular" class="btn btn-get-started px-4 mt-4">
+  <a href="{{ route('login') }}" class="btn btn-get-started px-4 mt-4">
     Mulai Sekarang
   </a>
 </header>
@@ -169,7 +169,7 @@ SEMANDING
           <a href="#" class="btn btn-need-help px-4 mt-4 mx-1">
             Butuh Bantuan
           </a>
-          <a href="{{ route('register') }}" class="btn btn-get-started px-4 mt-4 mx-1">
+          <a href="{{ route('login') }}" class="btn btn-get-started px-4 mt-4 mx-1">
             Mulai Sekarang
           </a>
         </div>

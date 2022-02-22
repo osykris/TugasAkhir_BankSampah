@@ -47,7 +47,7 @@
       class="row border-top justify-content-center align-items-center pt-4"
     >
       <div class="col-auto text-gray-500 font-weight-light">
-        2022 Copyright Semanding • Seluruh Hak Cipta • Dibuat oleh Mahasiswa Politeknik Negeri Malang
+        2022 Copyright Semanding • Seluruh Hak Cipta • Dibuat oleh 💙 Mahasiswa Politeknik Negeri Malang
       </div>
     </div>
   </div>

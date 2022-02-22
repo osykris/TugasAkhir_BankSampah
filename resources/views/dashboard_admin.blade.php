@@ -1,4 +1,4 @@
-@extends('layouts.dashboard_sampah')
+@extends('layouts.app')
 @section('content')
 <section class="section">
     <div class="section-header">

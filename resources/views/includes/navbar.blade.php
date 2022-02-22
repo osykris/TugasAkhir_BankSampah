@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <div class="container">
   <nav class="row navbar navbar-expand-lg navbar-light bg-white">
-    <a href="#" class="navbar-brand">
+    <a href="/" class="navbar-brand">
       <img src="{{ url('frontend/images/smdwaste.png') }}" alt="Logo NOMADS" />
     </a>
     <button
@@ -16,7 +16,7 @@
     <div class="collapse navbar-collapse" id="navb">
       <ul class="navbar-nav ml-auto mr-3">
         <li class="nav-item mx-md-2">
-          <a href="#" class="nav-link">Beranda</a>
+          <a href="/" class="nav-link">Beranda</a>
         </li>
         <li class="nav-item mx-md-2">
           <a href="#" class="nav-link">Tentang Kami</a>
