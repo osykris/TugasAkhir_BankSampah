@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PenjualanSampah extends Model
 {
-    use HasFactory;
+    public function transaksis()
+    {
+        return $this->hasMany(Transaksi::class, 'jual_id', 'id');
+    }
 }

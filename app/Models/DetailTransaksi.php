@@ -7,5 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailTransaksi extends Model
 {
-    use HasFactory;
+    public function transaksi()
+    {
+        return $this->belongsTo(Transaksi::class, 'transaksi_id', 'id');
+    }
+
+    public function data_sampah()
+    {
+        return $this->belongsTo(DataSampah::class, 'sampah_id', 'id');
+    }
 }
