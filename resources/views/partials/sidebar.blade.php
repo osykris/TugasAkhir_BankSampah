@@ -79,7 +79,7 @@
       </li>
       <li class="menu-header">Transaksi</li>
       <li class="nav-item ">
-        <a href="#" class="nav-link "><i class="fas fa-fire"></i> <span> Setor Sampah</span></a>
+        <a href="{{ route('setor-sampah') }}" class="nav-link "><i class="fas fa-fire"></i> <span> Setor Sampah</span></a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Transaksi</span></a>
