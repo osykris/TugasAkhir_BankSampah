@@ -75,7 +75,7 @@
       </li>
       <li class="menu-header">Sampah</li>
       <li class="nav-item ">
-        <a href="#" class="nav-link "><i class="fas fa-fire"></i> <span> Daftar Harga Sampah</span></a>
+        <a href="{{ url('data-sampah')}}" class="nav-link "><i class="fas fa-fire"></i> <span> Daftar Harga Sampah</span></a>
       </li>
       <li class="menu-header">Transaksi</li>
       <li class="nav-item ">

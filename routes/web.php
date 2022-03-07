@@ -18,14 +18,18 @@ Route::get('/', function () {
 });
 
 //auth route for both 
-Route::group(['middleware' => ['auth']], function() { 
-    
+Route::group(['middleware' => ['auth']], function () {
+
     //dashboard
     Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
-    
+
     //setor sampah
     Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
+
+    //data sampah
+    Route::resource('data-sampah', 'App\Http\Controllers\DataSampahController');
+
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
