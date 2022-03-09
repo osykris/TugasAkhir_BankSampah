@@ -28,7 +28,7 @@
           <a href="#" class="nav-link">Artikel</a>
         </li>
         <li class="nav-item mx-md-2">
-          <a href="#" class="nav-link">Kontak</a>
+          <a href="/kontak" class="nav-link">Kontak</a>
         </li>
       </ul>
 
