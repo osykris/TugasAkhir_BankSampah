@@ -17,6 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/tentang-kami', function () {
+    return view('about');
+});
+
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 

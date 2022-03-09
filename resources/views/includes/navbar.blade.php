@@ -19,7 +19,7 @@
           <a href="/" class="nav-link">Beranda</a>
         </li>
         <li class="nav-item mx-md-2">
-          <a href="#" class="nav-link">Tentang Kami</a>
+          <a href="/tentang-kami" class="nav-link">Tentang Kami</a>
         </li>
         <li class="nav-item mx-md-2">
           <a href="#" class="nav-link">Produk</a>

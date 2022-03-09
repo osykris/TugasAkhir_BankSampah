@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <link rel="icon" href="../frontend/images/throwing-trash.png">
-  <title>SEMANDING</title>
+    <title>SEMANDING</title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -14,7 +13,7 @@
 
   <!-- CSS Libraries -->
   <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+<link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="../assets/css/style.css">
@@ -25,7 +24,7 @@
   <div id="app">
     <div class="main-wrapper">
       <div class="navbar-bg"></div>
-
+     
       @include('partials.navbar')
       @include('partials.sidebar')
 
@@ -52,8 +51,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="../assets/js/stisla.js"></script>
 
-
-
   <!-- JS Libraies -->
 
   <!-- Template JS File -->
@@ -62,5 +59,4 @@
 
   <!-- Page Specific JS File -->
 </body>
-
 </html>

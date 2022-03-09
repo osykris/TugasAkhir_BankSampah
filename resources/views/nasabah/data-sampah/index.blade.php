@@ -1,6 +1,7 @@
 @extends('layouts.app-dashboard')
 
 @section('content')
+<link rel="stylesheet" href="../datatables.net-bs4/css/dataTables.bootstrap4.min.css">
 <section class="section">
     <div class="section-header">
         <h1>Data Harga Sampah</h1>
