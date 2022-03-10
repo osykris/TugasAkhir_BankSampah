@@ -117,10 +117,10 @@ SEMANDING
                 <h5>Tentang Kami</h5>
                 <h2 class="text-blur">Tentang</h2>
                 <h2 class="area-title">Bank Sampah Semanding Berseri</h2>
-                <p><b>Bank Sampah Semanding berseri merupakan sebuah bank sampah yang berada
+                <p>Bank Sampah Semanding berseri merupakan sebuah bank sampah yang berada
                         di Kecamatan Kanigoro, Kabupaten Blitar. Bank Sampah ini menerima sampah
                         berupa sampah an-organik. Untuk Bank Sampah ini diperuntukkan masyarakat
-                        Kecamatan Kanigoro, Kabupaten Blitar.</b></p>
+                        Kecamatan Kanigoro, Kabupaten Blitar.</p>
             </div>
 
         </div>

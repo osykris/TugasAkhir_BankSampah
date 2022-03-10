@@ -674,7 +674,7 @@ SEMANDING
                                                                 <div class="col">
                                                                     <p style="text-align: left; margin-left: -70px;">
                                                                         Lokasi Kami
-                                                                        <span>Bogor, Indonesia</span>
+                                                                        <span>Kec. Kanigoro, Kab. Blitar</span>
                                                                     </p>
                                                                 </div>
                                                             </div>
@@ -687,7 +687,7 @@ SEMANDING
                                                                 <div class="col">
                                                                     <p style="text-align: left; margin-left: -70px;">
                                                                         Kirim Email Kami
-                                                                        <span>contact@inovasimuda.org</span>
+                                                                        <span>banksampah.semanding@gmail.com</span>
                                                                     </p>
                                                                 </div>
                                                             </div>
