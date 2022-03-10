@@ -69,10 +69,10 @@ SEMANDING
                 style="background-image: url('frontend/images/Produk/{{ $item->gambar }}');"
               >
                 <div class="travel-country" style="color: #FF9E53;">Rp. {{ number_format($item->harga) }}</div>
-                <div class="travel-location">{{ $item->nama }}</div>
+                <div class="travel-location"><b> {{ $item->nama }} </b></div>
                 <div class="travel-button mt-auto">
                   <a href="#" class="btn btn-travel-details px-4">
-                    Beli'
+                    Beli
                   </a>
                 </div>
               </div>
@@ -95,7 +95,7 @@ SEMANDING
         </div>
         <div class="col-md-8 text-center">
           <img
-            src="frontend/images/partner.png"
+            src="frontend/images/bag5.png"
             alt="Logo Partner"
             class="img-partner"
           />
