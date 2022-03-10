@@ -59,6 +59,28 @@ SEMANDING
     </div>
   </section>
 
+  <section class="section-popular-content" id="popularContent">
+    <div class="container">
+      <div class="section-popular-travel row justify-content-center">
+        @foreach($items as $item)
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div
+                class="card-travel text-center d-flex flex-column"
+                style="background-image: url('frontend/images/Produk/{{ $item->gambar }}');"
+              >
+                <div class="travel-country" style="color: #FF9E53;">Rp. {{ number_format($item->harga) }}</div>
+                <div class="travel-location">{{ $item->nama }}</div>
+                <div class="travel-button mt-auto">
+                  <a href="#" class="btn btn-travel-details px-4">
+                    Beli'
+                  </a>
+                </div>
+              </div>
+            </div>
+        @endforeach
+      </div>
+    </div>
+  </section>
 
   <section class="section-networks" id="networks">
     <div class="container">

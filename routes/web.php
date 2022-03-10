@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\ProdukDaurUlang;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'items' => ProdukDaurUlang::take(4)->get(),
+    ]);
 });
 
 Route::get('/tentang-kami', function () {
@@ -24,6 +26,9 @@ Route::get('/tentang-kami', function () {
 Route::get('/kontak', function () {
     return view('contact');
 });
+
+Route::get('/produk', 'App\Http\Controllers\ProdukDaurUlangController@render');
+Route::get('cari','App\Http\Controllers\ProdukDaurUlangController@cari');
 
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {

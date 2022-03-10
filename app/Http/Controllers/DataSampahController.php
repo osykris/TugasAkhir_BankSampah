@@ -22,4 +22,9 @@ class DataSampahController extends Controller
 
         return view('nasabah.data-sampah.index', compact('sampahs'));
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
