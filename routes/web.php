@@ -38,9 +38,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     //setor sampah
     Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
+    Route::get('/add-setor', 'App\Http\Controllers\SetorSampahController@index_setor');
+    Route::get('/add-jemput', 'App\Http\Controllers\SetorSampahController@index_jemput');
+    Route::post('tambah-sampah/{id}', 'App\Http\Controllers\SetorSampahController@setor');
+    Route::delete('sampah/hapus/{id}', 'App\Http\Controllers\SetorSampahController@hapus_sampah');
+    Route::post('setor', 'App\Http\Controllers\SetorSampahController@konfirmasi');
 
     //data sampah
-    Route::resource('data-sampah', 'App\Http\Controllers\DataSampahController');
+    Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
 
 });
 
