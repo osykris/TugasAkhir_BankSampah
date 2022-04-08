@@ -7,7 +7,7 @@
     <h1>Data Harga Sampah</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Data Harga Sampah</a></div>
+            <div class="breadcrumb-item"><a href="data-sampah">Data Harga Sampah</a></div>
         </div>
     </div>
 

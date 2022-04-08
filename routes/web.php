@@ -33,11 +33,15 @@ Route::get('cari','App\Http\Controllers\ProdukDaurUlangController@cari');
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 
+    //admin
+    
+    
     //dashboard
     Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
     //setor sampah
     Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
+    Route::get('/setor-sampah/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail');
     Route::get('/add-setor', 'App\Http\Controllers\SetorSampahController@index_setor');
     Route::get('/add-jemput', 'App\Http\Controllers\SetorSampahController@index_jemput');
     Route::post('tambah-sampah/{id}', 'App\Http\Controllers\SetorSampahController@setor');

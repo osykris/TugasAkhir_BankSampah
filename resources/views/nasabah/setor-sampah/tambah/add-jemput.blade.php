@@ -2,14 +2,18 @@
 @section('content')
 <section class="section">
     <div class="section-header">
+        <div class="section-header-back">
+            <a href="{{ route('setor-sampah') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        </div>
         <h1>Tambah Setor Sampah</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('setor-sampah') }}">Semua Setoran</a></div>
-            <div class="breadcrumb-item"><a href="#">Tambah Setoran</a></div>
+            <div class="breadcrumb-item"><a href="/add-jemput">Jemput</a></div>
         </div>
     </div>
     <div class="section-body">
+        <h2 class="section-title">Jemput Sampah</h2>
         <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">

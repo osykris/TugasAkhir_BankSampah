@@ -55,7 +55,7 @@
                                         @endif
                                         <td>{{ $transaksi->waktu }} WIB</td>
                                         <td><div class="badge badge-info">{{ $transaksi->status }}</div></td>
-                                        <td><a href="#" class="btn btn-primary">Detail</a></td>
+                                        <td><a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-primary">Detail</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

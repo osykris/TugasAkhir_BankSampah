@@ -5,7 +5,7 @@
       <a class="text-light" href="{{ route('dashboard') }}"><img src="../frontend/images/throwing-trash-fill.png" height="80" alt=""><span>SEMANDING</span></a>
     </div>
     <div class="sidebar-brand sidebar-brand-sm">
-      <a href="#"><img src="../frontend/images/throwing-trash.png" height="60" alt=""></a>
+      <a href="{{ route('dashboard') }}"><img src="{!! asset('frontend/images/throwing-trash.png') !!}" height="60" alt=""></a>
     </div><br><br><br><br>
     <ul class="sidebar-menu">
       @if (Auth::user()->hasRole('admin'))
@@ -30,6 +30,9 @@
       </li>
       <li class="nav-item ">
         <a href="#" class="nav-link "><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
+      </li>
+      <li class="nav-item ">
+        <a href="#" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Penarikan Saldo</span></a>

@@ -25,6 +25,12 @@ class SetorSampahController extends Controller
         return view('nasabah.setor-sampah.index', compact('transaksis'));
     }
 
+    public function detail($id)
+    {
+        $transaksis = Transaksi::where('id', $id)->get();
+        return view('nasabah.setor-sampah.detail', compact('transaksis'));
+    }
+
     public function index_setor()
     {
         $sampahs = DataSampah::all();
