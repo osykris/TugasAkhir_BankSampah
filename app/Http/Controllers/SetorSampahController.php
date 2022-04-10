@@ -22,7 +22,8 @@ class SetorSampahController extends Controller
     public function index()
     {
         if (Auth::user()->hasRole('user')) {
-            $transaksis = Transaksi::where('status', 'Diajukan')->get();
+            $transaksis = DB::table('transaksis')->where('status', 'Diajukan')
+            ->where('user_id', Auth::user()->id)->get();
             return view('nasabah.setor-sampah.index', compact('transaksis'));
         }
     }

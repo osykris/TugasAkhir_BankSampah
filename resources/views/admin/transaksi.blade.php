@@ -28,7 +28,7 @@
                                         <th>Tanggal</th>
                                         <th>Waktu</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,7 +47,10 @@
                                         <td>
                                             <div class="badge badge-info">{{ $transaksi->status }}</div>
                                         </td>
-                                        <td><a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-primary">Detail</a></td>
+                                        <td class="text-center">
+                                            <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                                            <a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

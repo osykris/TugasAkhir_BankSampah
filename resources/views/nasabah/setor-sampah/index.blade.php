@@ -58,9 +58,9 @@
                                             <div class="badge badge-info">{{ $transaksi->status }}</div>
                                         </td>
                                         <td>
-                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_setor('{{ $transaksi->id }}')" id="edit-setor"><i class="fas fa-edit me-2"></i></button>
-                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_setor('{{ $transaksi->id }}')"><i class='fas fa-trash'></i></button>
-                                            <a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-primary">Detail</a>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_setor('{{ $transaksi->id }}')" id="edit-setor"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_setor('{{ $transaksi->id }}')"><i class='fas fa-times'></i></button>
+                                            <a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-outline-primary">Detail</a>
                                         </td>
                                     </tr>
                                     @endforeach
