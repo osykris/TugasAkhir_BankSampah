@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaksi extends Model
 {
+
+    protected $table = 'transaksis';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'metode_penyetoran', 'kabupaten', 'kecamatan', 'desa', 'alamat_lengkap', 'no_hp', 'tanggal', 'waktu',
+        'total_berat', 'status'
+    ];
+    public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

@@ -93,7 +93,7 @@ $('#update-sampah').click(function() {
       processData: false,
       success: function(response) {
         console.log(response);
-        $('#close-samapah-edit').click();
+        $('#close-sampah-edit').click();
         window.location.reload();
       }
     });
@@ -148,6 +148,101 @@ function del_data_sampah(id) {
   });
 }
 
+function edit_setor(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-setor",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalSetorUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#metode_penyetoran_edit').val(response.data.metode_penyetoran);
+      $('#tanggal_edit').val(response.data.tanggal);
+      $('#waktu_edit').val(response.data.waktu);
+      $('#total_berat_edit').val(response.data.total_berat);
+    },
+  });
+}
+$('#update-setor').click(function() {
+  if ($("#form-setor-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-setor-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-setor/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-setor-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-setor-update")[0].reportValidity();
+  }
+});
 
 $("#setor-transaksi").dataTable();
+
+function hapus_setor(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-setor",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-setor').attr('onclick', `del_data_setor(` + response.data + `)`);
+
+          $('#ModalHapusSetor').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_setor(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-setor",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusSetor').modal('hide');
+          // remove card data
+
+      },
+  });
+}
+
+$("#transaksi-masuk").dataTable();
 

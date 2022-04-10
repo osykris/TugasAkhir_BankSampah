@@ -33,6 +33,11 @@ Route::get('cari', 'App\Http\Controllers\ProdukDaurUlangController@cari');
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 
+    //BOTH
+
+    //dashboard
+    Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
+
     //ADMIN
 
     //jenis sampah
@@ -43,10 +48,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hapus-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@delete');
     Route::post('/destroy-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@destroy');
 
-    //dashboard
-    Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
+    //transaksi sampah masuk
+    Route::get('/transaksi-masuk', 'App\Http\Controllers\Admin\TransaksiController@index')->name('transaksi-masuk');
 
-    //setor sampah
+    //USER (NASABAH)
+
+    //setor sampah (transaksi baru)
     Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
     Route::get('/setor-sampah/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail');
     Route::get('/add-setor', 'App\Http\Controllers\SetorSampahController@index_setor');
@@ -54,6 +61,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('tambah-sampah/{id}', 'App\Http\Controllers\SetorSampahController@setor');
     Route::delete('sampah/hapus/{id}', 'App\Http\Controllers\SetorSampahController@hapus_sampah');
     Route::post('setor', 'App\Http\Controllers\SetorSampahController@konfirmasi');
+    Route::get('/hapus-setor/', 'App\Http\Controllers\SetorSampahController@delete');
+    Route::post('/destroy-setor/', 'App\Http\Controllers\SetorSampahController@destroy');
+    Route::get('/edit-setor/',  'App\Http\Controllers\SetorSampahController@edit');
+    Route::post('/update-setor/',  'App\Http\Controllers\SetorSampahController@update');
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');

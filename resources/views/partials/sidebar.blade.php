@@ -29,7 +29,7 @@
         </ul>
       </li>
       <li class="nav-item ">
-        <a href="#" class="nav-link "><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
+        <a href="{{ route('transaksi-masuk') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
       </li>
       <li class="nav-item ">
         <a href="#" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>

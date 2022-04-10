@@ -57,7 +57,7 @@
                             <td>{{ $transaksi->waktu }} WIB</td>
                         </tr>
                         <tr>
-                            <td>Total Berat</td>
+                            <td>Perkiraan Total Berat</td>
                             <td>:</td>
                             <td>{{ $transaksi->total_berat }} kg</td>
                         </tr>

@@ -128,7 +128,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Yakin ingin menghapus jenis Sampah?
+                Yakin ingin menghapus jenis sampah?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
