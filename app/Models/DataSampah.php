@@ -13,16 +13,11 @@ class DataSampah extends Model
     protected $fillable = [
         'nama_jenisSampah', 'harga'
     ];
-    protected $guarded = array();
+    public $timestamps = false;
 
     public function detail_transaksis()
     {
         return $this->hasMany(DetailTransaksi::class, 'sampah_id', 'id');
-    }
-
-    public function storeData($input)
-    {
-    	return static::create($input);
     }
 
 }

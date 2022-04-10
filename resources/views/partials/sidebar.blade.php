@@ -54,7 +54,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="#" class="nav-link"><i class="fa fa-trash"></i> <span>Jenis Sampah</span></a>
+        <a href="jenis-sampah" class="nav-link"><i class="fa fa-trash"></i> <span>Jenis Sampah</span></a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Lain-Lain</span></a>

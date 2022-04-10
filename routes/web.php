@@ -28,14 +28,21 @@ Route::get('/kontak', function () {
 });
 
 Route::get('/produk', 'App\Http\Controllers\ProdukDaurUlangController@render');
-Route::get('cari','App\Http\Controllers\ProdukDaurUlangController@cari');
+Route::get('cari', 'App\Http\Controllers\ProdukDaurUlangController@cari');
 
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 
-    //admin
-    
-    
+    //ADMIN
+
+    //jenis sampah
+    Route::get('jenis-sampah', 'App\Http\Controllers\Admin\JenisSampahController@index')->name('jenis-sampah');
+    Route::post('/add-sampah/save', 'App\Http\Controllers\Admin\JenisSampahController@store');
+    Route::get('/edit-jenis-sampah/',  'App\Http\Controllers\Admin\JenisSampahController@edit');
+    Route::post('/update-jenis-sampah/',  'App\Http\Controllers\Admin\JenisSampahController@update');
+    Route::get('/hapus-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@delete');
+    Route::post('/destroy-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@destroy');
+
     //dashboard
     Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
@@ -50,7 +57,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
-
 });
 
 
