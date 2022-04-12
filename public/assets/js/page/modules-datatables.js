@@ -196,6 +196,7 @@ $('#update-setor').click(function() {
   }
 });
 
+
 $("#setor-transaksi").dataTable();
 
 function hapus_setor(id) {
@@ -246,3 +247,49 @@ function del_data_setor(id) {
 
 $("#transaksi-masuk").dataTable();
 
+function edit_statuss(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-status",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalStatusUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#status_edit').val(response.data.status);
+    },
+  });
+}
+$('#update-status-data').click(function() {
+  if ($("#form-status-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-status-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-status/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-status-edit').click();
+         top.location.href="/riwayat";
+      }
+    });
+  } else {
+    $("#form-status-update")[0].reportValidity();
+  }
+});
+
+$("#riwayat").dataTable();

@@ -55,7 +55,7 @@
                                         @endif
                                         <td>{{ $transaksi->waktu }} WIB</td>
                                         <td>
-                                            <div class="badge badge-info">{{ $transaksi->status }}</div>
+                                            <div class="badge badge-warning">{{ $transaksi->status }}</div>
                                         </td>
                                         <td>
                                             <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_setor('{{ $transaksi->id }}')" id="edit-setor"><i class="fas fa-edit"></i></button>

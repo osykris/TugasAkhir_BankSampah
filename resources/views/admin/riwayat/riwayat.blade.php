@@ -2,10 +2,10 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <h1>Transaksi</h1>
+        <h1>Riwayat Transaksi</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('transaksi-masuk') }}">Semua Transaksi Masuk</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('riwayat') }}">Semua Riwayat</a></div>
         </div>
     </div>
     <div class="section-body">
@@ -13,11 +13,11 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Semua Transaksi Masuk</h4>
+                        <h4>Semua Riwayat</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped" id="transaksi-masuk">
+                            <table class="table table-striped" id="riwayat">
                                 <thead>
                                     <tr>
                                         <th class="text-center">
@@ -45,11 +45,21 @@
                                         @endif
                                         <td>{{ $transaksi->waktu }} WIB</td>
                                         <td>
+                                            @if($transaksi->status == 'Diterima')
+                                            <div class="badge badge-success">{{ $transaksi->status }}</div>
+                                            @elseif($transaksi->status == 'Ditolak')
+                                            <div class="badge badge-danger">{{ $transaksi->status }}</div>
+                                            @else
                                             <div class="badge badge-info">{{ $transaksi->status }}</div>
+                                            @endif
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                                            <a href="{{ url('setor-sampah/detail') }}/{{ $transaksi->id }}" class="btn btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
+                                            <div class="buttons">
+                                                <a href="{{ url('transaksi/detail') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
+                                                @if($transaksi->status == 'Diterima')
+                                                <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
+                                                @endif
+                                            </div>
                                         </td>
                                     </tr>
                                     @endforeach

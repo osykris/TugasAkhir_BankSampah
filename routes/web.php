@@ -48,9 +48,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hapus-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@delete');
     Route::post('/destroy-jenis-sampah/', 'App\Http\Controllers\Admin\JenisSampahController@destroy');
 
-    //transaksi sampah masuk
+    //transaksi
     Route::get('/transaksi-masuk', 'App\Http\Controllers\Admin\TransaksiController@index')->name('transaksi-masuk');
+    Route::get('/edit-status/',  'App\Http\Controllers\Admin\TransaksiController@edit');
+    Route::post('/update-status/',  'App\Http\Controllers\Admin\TransaksiController@update');
+    Route::get('/transaksi/detail/{id}', 'App\Http\Controllers\Admin\TransaksiController@detail');
 
+    //riwayat
+    Route::get('/riwayat', 'App\Http\Controllers\Admin\TransaksiController@riwayat')->name('riwayat');
+    Route::get('/tambah-sampah/{id}', 'App\Http\Controllers\Admin\TransaksiController@index_sampah');
+    
     //USER (NASABAH)
 
     //setor sampah (transaksi baru)

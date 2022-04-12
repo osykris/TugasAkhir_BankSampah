@@ -32,7 +32,7 @@
         <a href="{{ route('transaksi-masuk') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
       </li>
       <li class="nav-item ">
-        <a href="#" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>
+        <a href="{{ route('riwayat') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Penarikan Saldo</span></a>
@@ -54,7 +54,7 @@
       </li>
 
       <li class="nav-item">
-        <a href="jenis-sampah" class="nav-link"><i class="fa fa-trash"></i> <span>Jenis Sampah</span></a>
+        <a href="{{ route('jenis-sampah') }}" class="nav-link"><i class="fa fa-trash"></i> <span>Jenis Sampah</span></a>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Lain-Lain</span></a>

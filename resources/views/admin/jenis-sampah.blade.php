@@ -42,7 +42,7 @@
                                         <td>Rp. {{ number_format($sampah->harga) }}</td>
                                         <td class="text-center">
                                             <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit('{{ $sampah->id }}')" id="edit-sampah"><i class="fas fa-edit me-2"></i></button>
-                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_sampah('{{ $sampah->id }}')"><i class='fas fa-trash'></i></button>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_sampah('{{ $sampah->id }}')"><i class='fas fa-times'></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

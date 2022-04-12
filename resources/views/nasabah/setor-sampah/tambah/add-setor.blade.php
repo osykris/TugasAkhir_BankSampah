@@ -14,7 +14,7 @@
 
 <section class="section">
     <div class="section-header">
-    <div class="section-header-back">
+        <div class="section-header-back">
             <a href="{{ route('setor-sampah') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Tambah Setor Sampah</h1>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="section-body">
-    <h2 class="section-title">Setor Sampah</h2>
+        <h2 class="section-title">Setor Sampah</h2>
         <!-- <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
@@ -142,46 +142,4 @@
         </form>
     </div>
 </section>
-
-<!-- Modal Tambah Jenis Sampah -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" id="exampleModal">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tambah Jenis Sampah</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th class="text-center">No</th>
-                            <th>Nama Jenis Sampah</th>
-                            <th>Harga</th>
-                            <th class="text-center">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1; ?>
-                        @foreach($sampahs as $sampah)
-                        <tr>
-                            <td class="text-center">{{ $no++ }}</td>
-                            <td>{{ $sampah->nama_jenisSampah }}</td>
-                            <td>Rp {{ number_format($sampah->harga) }}</td>
-                            <td class="text-center">
-                                <form method="POST" action="{{ url('tambah-sampah') }}/{{ $sampah->id }}">
-                                    @csrf
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div </div>
-        </div>
-    </div>
-
-    @endsection
+@endsection
