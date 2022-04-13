@@ -101,4 +101,12 @@ class TransaksiController extends Controller
             return view('admin.riwayat.tambah-sampah', compact('detail_transaksis', 'sampahs'));
         }
     }
+
+	public function store($id)
+    {
+        if (Auth::user()->hasRole('admin')) {
+			
+        }
+    }
+
 }

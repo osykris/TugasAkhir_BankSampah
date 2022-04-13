@@ -293,3 +293,53 @@ $('#update-status-data').click(function() {
 });
 
 $("#riwayat").dataTable();
+
+$("#tambah-sampah").dataTable();
+
+$("#nasabah").dataTable();
+
+function hapus_user(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-user",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-user-sampah').attr('onclick', `del_data_user(` + response.data + `)`);
+
+          $('#ModalUserSampah').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_user(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-user",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalUserSampah').modal('hide');
+          // remove card data
+
+      },
+  });
+}

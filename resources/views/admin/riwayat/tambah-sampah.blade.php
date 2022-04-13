@@ -37,7 +37,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table table-striped">
+                <table class="table table-striped" id="tambah-sampah">
                     <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -54,9 +54,10 @@
                             <td>{{ $sampah->nama_jenisSampah }}</td>
                             <td>Rp {{ number_format($sampah->harga) }}</td>
                             <td class="text-center">
-                                <form method="POST" action="{{ url('tambah-sampah') }}/{{ $sampah->id }}">
+                                <form method="POST" action="{{ url('tambah-sampah/save') }}/{{ $sampah->id }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <input type="number" class="form-control" name="total_berat" required=""  id="total_berat" placeholder="Masukkan Berat (kg)">
+                                    <button type="submit" style="float: left;" class="btn btn-primary">Tambah</button>
                                 </form>
                             </td>
                         </tr>
