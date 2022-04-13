@@ -57,7 +57,7 @@
                                             <div class="buttons">
                                                 <a href="{{ url('transaksi/detail') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
                                                 @if($transaksi->status == 'Diterima')
-                                                <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
+                                                <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}/{{ $transaksi->user_id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
                                                 @endif
                                             </div>
                                         </td>

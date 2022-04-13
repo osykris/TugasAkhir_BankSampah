@@ -343,3 +343,51 @@ function del_data_user(id) {
       },
   });
 }
+
+$("#detail-sampah").dataTable();
+
+function hapus_sampahtambah(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-tambah",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-sampahtambah').attr('onclick', `del_data_sampahtambah(` + response.data + `)`);
+
+          $('#ModalHapusTambah').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_sampahtambah(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-tambah",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusTambah').modal('hide');
+          // remove card data
+
+      },
+  });
+}

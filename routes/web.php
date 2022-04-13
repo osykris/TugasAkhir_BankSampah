@@ -56,8 +56,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     //riwayat
     Route::get('/riwayat', 'App\Http\Controllers\Admin\TransaksiController@riwayat')->name('riwayat');
-    Route::get('/tambah-sampah/{id}', 'App\Http\Controllers\Admin\TransaksiController@index_sampah');
-    Route::post('/tambah-sampah/save/{id}', 'App\Http\Controllers\Admin\TransaksiController@store');
+    Route::get('/tambah-sampah/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@index_sampah');
+    Route::post('/tambah-sampah/save/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@store');
+    Route::get('/hapus-tambah/', 'App\Http\Controllers\Admin\TransaksiController@delete_tambah');
+    Route::post('/destroy-tambah/', 'App\Http\Controllers\Admin\TransaksiController@destroy_tambah');
+    Route::post('/transaksi/selesai/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@konfirmasi');
 
     //nasabah
     Route::get('/user', 'App\Http\Controllers\Admin\NasabahController@index')->name('user');
