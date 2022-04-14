@@ -15,14 +15,13 @@
             <div class="breadcrumb-item"><a href="saldo-tps3r">Saldo TPS3R</a></div>
         </div>
     </div>
-
     <div class="section-body">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped" id="table-1">
+                            <table class="table table-striped" id="tpsr">
                                 <thead>
                                     <tr>
                                         <th class="text-center">
@@ -43,7 +42,7 @@
                                         <td>Rp. {{ number_format($tps3r->saldo) }}</td>
                                         <td>{{ $tps3r->keterangan }}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit('{{ $tps3r->id }}')" id="edit-tps3r"><i class="fas fa-edit me-2"></i></button>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_tps3r('{{ $tps3r->id }}')" id="edit-tps3r"><i class="fas fa-edit me-2"></i></button>
                                             <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_tps3r('{{ $tps3r->id }}')"><i class='fas fa-times'></i></button>
                                         </td>
                                     </tr>
@@ -75,8 +74,8 @@
                         <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tanggal_input" id="tanggal_input">
                     </div>
                     <div class="form-group">
-                        <label for="saldo">Saldo</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Saldo" name="saldo" id="saldo">
+                        <label for="saldo_tps3r">Saldo</label>
+                        <input type="text" class="form-control" placeholder="Masukkan saldo" name="saldo_tps3r" id="saldo_tps3r">
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
@@ -110,8 +109,8 @@
                         <input type="date" class="form-control" placeholder="Masukkan Tanggal Input" name="tanggal_input_edit" id="tanggal_input_edit">
                     </div>
                     <div class="form-group">
-                        <label for="saldo">Saldo</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Saldo" name="saldo_edit" id="saldo_edit">
+                        <label for="saldo_tps3r_edit">Saldo</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Saldo" name="saldo_tps3r_edit" id="saldo_tps3r_edit">
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>

@@ -7,6 +7,7 @@ use App\Models\DataSampah;
 use App\Models\DetailTransaksi;
 use App\Models\Saldo;
 use App\Models\Transaksi;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -126,7 +127,9 @@ class TransaksiController extends Controller
                     'users.name'
                 )
                 ->get();
-            return view('admin.transaksi.detail-transaksi', compact('transaksis'));
+            $detail_transaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+            $saldos = Saldo::where('transaksi_id', $id)->get();
+            return view('admin.transaksi.detail-transaksi', compact('transaksis', 'detail_transaksi', 'saldos'));
         }
     }
 
@@ -140,13 +143,13 @@ class TransaksiController extends Controller
                     ->where('transaksis.user_id', $iduser)
                     ->select('detail_transaksis.jenis_sampah', 'detail_transaksis.harga', 'detail_transaksis.berat', 'detail_transaksis.total_harga', 'detail_transaksis.id')
                     ->get();
-                    $namas = DB::table('transaksis')
-                ->join('users', 'transaksis.user_id', '=', 'users.id')
-                ->where('transaksis.id', $id)
-                ->select(
-                    'users.name'
-                )
-                ->get();
+                $namas = DB::table('transaksis')
+                    ->join('users', 'transaksis.user_id', '=', 'users.id')
+                    ->where('transaksis.id', $id)
+                    ->select(
+                        'users.name'
+                    )
+                    ->get();
                 $sampahs = DataSampah::all();
                 return view('admin.riwayat.tambah-sampah', compact('detail_transaksis',  'id', 'sampahs', 'iduser', 'namas'));
             }
@@ -173,8 +176,6 @@ class TransaksiController extends Controller
                 $transaksi_detail->harga = $sampah->harga;
                 $transaksi_detail->total_harga = $sampah->harga * $request->total_berat;
                 $transaksi_detail->save();
-
-                
             } else {
                 $transaksi_detail = DetailTransaksi::where('sampah_id', $sampah->id)->where('transaksi_id', $new_transaksi->id)->first();
 
@@ -186,21 +187,12 @@ class TransaksiController extends Controller
                 $transaksi_detail->update();
             }
 
-            //jumlah total
-            // $transaksis_detail = DetailTransaksi::where('transaksi_id',  $new_transaksi->id)->get();
-            // $total = 0;
-            // foreach($transaksis_detail as $transaksis_details){
-            //     $total += $transaksis_details->berat;
-            // }
-            // $transaksi = Transaksi::where('user_id', $iduser)->where('status', 'Diterima')->where('transaksi_id',  $new_transaksi->id)->first();
-            // $transaksi->total_berat = $total;
-            // $transaksi->update();
-
             return redirect('/tambah-sampah/' . $new_transaksi->id . '/' . $iduser);
         }
     }
 
-    public function konfirmasi(Request $request, $id, $iduser){
+    public function konfirmasi(Request $request, $id, $iduser)
+    {
         $transaksi = Transaksi::where('id', $id)->where('user_id', $iduser)->first();
         $transaksi->status = $request->status;
         $detail_transaksis = DetailTransaksi::where('transaksi_id',  $id)->get();
@@ -213,23 +205,30 @@ class TransaksiController extends Controller
 
         //cek validasi
         $check_saldo = Saldo::where('transaksi_id', $id)->first();
-    	//menyimpang ke database Order
-    	if(empty($check_saldo))
-    	{
-    		$saldo = new Saldo();
+        //menyimpang ke database Order
+        if (empty($check_saldo)) {
+            $saldo = new Saldo();
             $saldo->user_id = $iduser;
-	    	$saldo->transaksi_id = $id;
+            $saldo->transaksi_id = $id;
             $jumlah_saldo = 0;
             $detail_transaksis = DetailTransaksi::where('transaksi_id',  $id)->get();
             foreach ($detail_transaksis as $detail_transaksi) {
                 $jumlah_saldo += $detail_transaksi->total_harga;
             }
             $saldo->saldo = $jumlah_saldo;
-	    	$saldo->save();
-    	}
+            $saldo->save();
+        }
 
-        return redirect('riwayat');
+        $jumlah_saldo_user = 0;
+        $user= User::where('id', $iduser)->first();
+        $detail_transaksis = DetailTransaksi::where('transaksi_id',  $id)->get();
+        foreach ($detail_transaksis as $detail_transaksi) {
+            $jumlah_saldo_user += $detail_transaksi->total_harga;
+        }
+        $user->saldo_user = $user->saldo_user + $jumlah_saldo_user;
+        $user->update();
 
+        return redirect('transaksi/detail/' . $id);
     }
 
     public function delete_tambah(Request $request)

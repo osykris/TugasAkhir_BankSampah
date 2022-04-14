@@ -346,6 +346,8 @@ function del_data_user(id) {
 
 $("#detail-sampah").dataTable();
 
+$("#detail").dataTable();
+
 function hapus_sampahtambah(id) {
   console.log(id);
   $.ajax({
@@ -419,7 +421,9 @@ $('#add-tps3r').click(function() {
   }
 });
 
-function edit(id) {
+$("#tpsr").dataTable();
+
+function edit_tps3r(id) {
   //console.log(id);
   $.ajax({
     type: "GET",
@@ -437,11 +441,12 @@ function edit(id) {
       // fill form in modal
       $('#id_edit').val(response.data.id);
       $('#tanggal_input_edit').val(response.data.tanggal_input);
-      $('#saldo_edit').val(response.data.saldo);
+      $('#saldo_tps3r__edit').val(response.data.saldo_tps3r);
       $('#keterangan_edit').val(response.data.keterangan);
     },
   });
 }
+
 $('#update-tps3r').click(function() {
   if ($("#form-tps3r-update")[0].checkValidity()) {
     var formdata = new FormData(document.getElementById("form-tps3r-update"));
@@ -511,3 +516,8 @@ function del_data_tps3r(id) {
       },
   });
 }
+
+$("#saldo").dataTable();
+
+$("#detail-saldo-transaksi").dataTable();
+

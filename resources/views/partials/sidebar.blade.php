@@ -28,9 +28,9 @@
         <a href="{{ route('riwayat') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Penarikan Saldo</span></a>
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="layout-default.html">Permintaan Penarikan</a></li>
+          <li><a class="nav-link" href="{{ route('saldo') }}">Saldo</a></li>
           <li><a class="nav-link" href="layout-transparent.html">Riwayat Penarikan</a></li>
         </ul>
       </li>

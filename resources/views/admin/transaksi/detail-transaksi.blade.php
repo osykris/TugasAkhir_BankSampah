@@ -20,6 +20,9 @@
     </div>
     <div class="col-md-12">
         <div class="card">
+        <div class="card-header">
+                <h4>Detail</h4>
+            </div>
             <div class="card-body">
                 <table class="table">
                     <tbody>
@@ -72,6 +75,53 @@
                 </table>
             </div>
         </div>
+        @foreach($transaksis as $transaksis)
+        @if($transaksi->status == 'Selesai')
+        <div class="card">
+            <div class="card-header">
+                <h4>List Sampah</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped" id="detail">
+                    <thead>
+                        <tr>
+                            <th class="text-center">No</th>
+                            <th>Nama Jenis Sampah</th>
+                            <th>Harga</th>
+                            <th>Berat</th>
+                            <th>Total Harga</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1; ?>
+                        @foreach($detail_transaksi as $detail_transaksis)
+                        <tr>
+                            <td class="text-center">{{ $no++ }}</td>
+                            <td>{{ $detail_transaksis->jenis_sampah }}</td>
+                            <td>Rp {{ number_format($detail_transaksis->harga) }}</td>
+                            <td>{{ $detail_transaksis->berat }} kg</td>
+                            <td>Rp {{ number_format($detail_transaksis->total_harga) }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    <tfoot style="background-color: #6777ef;">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td style="font-weight: bold; font-size:larger; color: white;">Total</td>
+                            <td style="font-weight: bold; font-size:larger; color: white;">{{ $transaksi->total_berat }} kg</td>
+                            @foreach($saldos as $saldo)
+                            <td style="font-weight: bold; font-size:larger; color: white;">Rp. {{number_format($saldo->saldo)}}</td>
+                            @endforeach
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        @else
+        <h6 style="color: red;">Belum Ada Jenis Sampah</h6>
+        @endif
+        @endforeach
     </div>
 </section>
 @endsection

@@ -12,7 +12,7 @@ class SaldoTPS3R extends Model
     protected $table = 'tps3r_saldos';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'tanggal_input', 'saldo', 'keterangan'
+        'tanggal_input', 'saldo_tps3r', 'keterangan'
     ];
     public $timestamps = false;
 }

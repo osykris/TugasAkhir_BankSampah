@@ -66,6 +66,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'App\Http\Controllers\Admin\NasabahController@index')->name('user');
     Route::get('/hapus-user/', 'App\Http\Controllers\Admin\NasabahController@delete');
     Route::post('/destroy-user/', 'App\Http\Controllers\Admin\NasabahController@destroy');
+
+    //saldo
+    Route::get('/saldo', 'App\Http\Controllers\Admin\SaldoController@index')->name('saldo');
+    Route::get('/saldo/detail/{id}', 'App\Http\Controllers\Admin\SaldoController@detail_saldo');
+    Route::get('/saldo/detail/{id}/{idtransaksi}', 'App\Http\Controllers\Admin\SaldoController@pertransaksi');
+
+    //saldo tps3r
+    Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
+    Route::post('/add-tps3r/save', 'App\Http\Controllers\Admin\SaldoTPS3RController@store');
+    Route::get('/edit-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@edit');
+    Route::post('/update-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@update');
+    Route::get('/hapus-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@delete');
+    Route::post('/destroy-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@destroy');
     
     //USER (NASABAH)
 
@@ -84,14 +97,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
-
-    //saldo tps3r
-    Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
-    Route::post('/add-tps3r/save', 'App\Http\Controllers\Admin\SaldoTPS3RController@store');
-    Route::get('/edit-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@edit');
-    Route::post('/update-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@update');
-    Route::get('/hapus-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@delete');
-    Route::post('/destroy-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@destroy');
 });
 
 

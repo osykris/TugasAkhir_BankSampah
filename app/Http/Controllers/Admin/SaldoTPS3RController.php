@@ -30,7 +30,7 @@ class SaldoTPS3RController extends Controller
 
 			$store = SaldoTPS3R::create([
 				'tanggal_input' => $request->input('tanggal_input'),
-				'saldo' => $request->input('saldo'),
+				'saldo_tps3r' => $request->input('saldo_tps3r'),
 				'keterangan' => $request->input('keterangan'),
 			]);
 
@@ -67,7 +67,7 @@ class SaldoTPS3RController extends Controller
 			$id = $request->input('id_edit');
 			$data = [
 				'tanggal_input' =>  $request->input('tanggal_input_edit'),
-				'saldo' =>  $request->input('saldo_edit'),
+				'saldo_tps3r' =>  $request->input('saldo_tps3r_edit'),
 				'keterangan' =>  $request->input('keterangan_edit'),
 			];
 
