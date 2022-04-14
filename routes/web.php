@@ -84,6 +84,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
+
+    //saldo tps3r
+    Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
+    Route::post('/add-tps3r/save', 'App\Http\Controllers\Admin\SaldoTPS3RController@store');
+    Route::get('/edit-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@edit');
+    Route::post('/update-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@update');
+    Route::get('/hapus-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@delete');
+    Route::post('/destroy-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@destroy');
 });
 
 
