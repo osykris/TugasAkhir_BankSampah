@@ -441,7 +441,7 @@ function edit_tps3r(id) {
       // fill form in modal
       $('#id_edit').val(response.data.id);
       $('#tanggal_input_edit').val(response.data.tanggal_input);
-      $('#saldo_tps3r__edit').val(response.data.saldo_tps3r);
+      $('#saldo_tps3r_edit').val(response.data.saldo_tps3r);
       $('#keterangan_edit').val(response.data.keterangan);
     },
   });
@@ -521,3 +521,125 @@ $("#saldo").dataTable();
 
 $("#detail-saldo-transaksi").dataTable();
 
+$("#product").dataTable();
+$('#add-product').click(function() {
+  if ($("#form-product")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-product"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-produk-daur-ulang/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-product')[0].reset();
+        $('#close-product').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-product")[0].reportValidity();
+  }
+});
+
+function edit_product(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-produk-daur-ulang",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalProdukDaurUlangUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#nama_edit').val(response.data.nama);
+      $('#deskripsi_edit').val(response.data.deskripsi);
+      $('#harga_edit').val(response.data.harga);
+      $('#gambar_edit').val(response.data.gambar);
+    },
+  });
+}
+
+$('#update-product').click(function() {
+  if ($("#form-product-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-product-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-produk-daur-ulang/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-product-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-product")[0].reportValidity();
+  }
+});
+
+function hapus_product(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-produk-daur-ulang",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-product').attr('onclick', `del_data_product(` + response.data + `)`);
+
+          $('#ModalHapusProdukDaurUlang').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_product(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-produk-daur-ulang",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusProdukDaurUlang').modal('hide');
+          // remove card data
+
+      },
+  });
+}

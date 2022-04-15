@@ -39,7 +39,7 @@
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $tps3r->tanggal_input }}</td>
-                                        <td>Rp. {{ number_format($tps3r->saldo) }}</td>
+                                        <td>Rp. {{ number_format($tps3r->saldo_tps3r) }}</td>
                                         <td>{{ $tps3r->keterangan }}</td>
                                         <td class="text-center">
                                             <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_tps3r('{{ $tps3r->id }}')" id="edit-tps3r"><i class="fas fa-edit me-2"></i></button>
