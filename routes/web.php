@@ -97,6 +97,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
+
+    //produk daur ulang
+    Route::get('produk-daur-ulang', 'App\Http\Controllers\Admin\ProdukDaurUlangController@index')->name('produk-daur-ulang');
+    Route::post('/add-produk-daur-ulang/save', 'App\Http\Controllers\Admin\ProdukDaurUlangController@store');
+    Route::get('/edit-produk-daur-ulang/',  'App\Http\Controllers\Admin\ProdukDaurUlangController@edit');
+    Route::post('/update-produk-daur-ulang/',  'App\Http\Controllers\Admin\ProdukDaurUlangController@update');
+    Route::get('/hapus-produk-daur-ulang/', 'App\Http\Controllers\Admin\ProdukDaurUlangController@delete');
+    Route::post('/destroy-produk-daur-ulang/', 'App\Http\Controllers\Admin\ProdukDaurUlangController@destroy');
 });
 
 
