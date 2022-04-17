@@ -105,6 +105,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-produk-daur-ulang/',  'App\Http\Controllers\Admin\ProdukDaurUlangController@update');
     Route::get('/hapus-produk-daur-ulang/', 'App\Http\Controllers\Admin\ProdukDaurUlangController@delete');
     Route::post('/destroy-produk-daur-ulang/', 'App\Http\Controllers\Admin\ProdukDaurUlangController@destroy');
+
+    //artikel
+    Route::get('artikel', 'App\Http\Controllers\Admin\ArtikelController@index')->name('artikel');
+    Route::post('/add-artikel/save', 'App\Http\Controllers\Admin\ArtikelController@store');
+    Route::get('/edit-artikel/',  'App\Http\Controllers\Admin\ArtikelController@edit');
+    Route::post('/update-artikel/',  'App\Http\Controllers\Admin\ArtikelController@update');
+    Route::get('/hapus-artikel/', 'App\Http\Controllers\Admin\ArtikelController@delete');
+    Route::post('/destroy-artikel/', 'App\Http\Controllers\Admin\ArtikelController@destroy');
 });
 
 

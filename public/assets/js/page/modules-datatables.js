@@ -643,3 +643,125 @@ function del_data_product(id) {
       },
   });
 }
+
+$("#artikel").dataTable();
+$('#add-artikel').click(function() {
+  if ($("#form-artikel")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-artikel"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-artikel/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-artikel')[0].reset();
+        $('#close-artikel').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-artikel")[0].reportValidity();
+  }
+});
+
+function edit_artikel(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-artikel",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalArtikelUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#title_edit').val(response.data.title);
+      $('#content_edit').val(response.data.content);
+      $('#gambar_artikel_edit').val(response.data.gambar_artikel);
+    },
+  });
+}
+
+$('#update-artikel').click(function() {
+  if ($("#form-artikel-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-artikel-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-artikel",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-artikel-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-artikel")[0].reportValidity();
+  }
+});
+
+function hapus_artikel(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-artikel",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-artikel').attr('onclick', `del_data_artikel(` + response.data + `)`);
+
+          $('#ModalHapusArtikel').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_artikel(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-artikel",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusArtikel').modal('hide');
+          // remove card data
+
+      },
+  });
+}
