@@ -53,7 +53,7 @@
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Lain-Lain</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="{{ route('produk-daur-ulang') }}">Produk</a></li>
-          <li><a class="nav-link" href="modules-chartjs.html">Artikel</a></li>
+          <li><a class="nav-link" href="{{ route('artikel') }}">Artikel</a></li>
         </ul>
       </li>
 
