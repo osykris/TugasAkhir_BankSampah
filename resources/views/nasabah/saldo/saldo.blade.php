@@ -2,14 +2,10 @@
 @section('content')
 <section class="section">
     <div class="section-header">
-        <div class="section-header-back">
-            <a href="{{ route('saldo') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
-        </div>
-        <h1>Detail Saldo Nasabah</h1>
+        <h1>Saldo Nasabah</h1>
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('saldo') }}">Semua Saldo</a></div>
-            <div class="breadcrumb-item"><a href="#">Detail Saldo</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item active"><a href="{{ route('saldo-nasabah') }}">Saldo</a></div>
         </div>
     </div>
     <div class="section-body">
@@ -17,7 +13,26 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Detail Saldo</h4>
+                        <h4>Saldo Anda</h4>
+                        <div class="section-header-button">
+                            <a class="btn btn-primary" href="#">
+                                Ajukan Metode Penarikan Saldo
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        @foreach($saldo as $saldos)
+                        <h2 style="color: green;">Rp. {{ number_format($saldos->saldo_user) }}</h2><br>
+                        @if($saldos->saldo_user != null && $saldos->saldo_user != 0)
+                        
+                        
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Semua Riwayat Saldo Per Transaksi</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -37,20 +52,20 @@
                                 </thead>
                                 <tbody>
                                     <?php $no = 1; ?>
-                                    @foreach($detail_saldos as $detail_saldo)
+                                    @foreach($riwayat_pertransaksi as $riwayat_pertransaksis)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td class="text-center">{{ $detail_saldo->transaksi_id }}</td>
-                                        <td>{{ $detail_saldo->name }}</td>
-                                        @if($detail_saldo->tanggal == null)
+                                        <td class="text-center">{{ $riwayat_pertransaksis->transaksi_id }}</td>
+                                        <td>{{ $riwayat_pertransaksis->name }}</td>
+                                        @if($riwayat_pertransaksis->tanggal == null)
                                         <td style="color: red;">Setiap tanggal 20/bulan</td>
                                         @else
-                                        <td>{{ $detail_saldo->tanggal }}</td>
+                                        <td>{{ $riwayat_pertransaksis->tanggal }}</td>
                                         @endif
-                                        <td>{{ $detail_saldo->waktu }} WIB</td>
-                                        <td>Rp. {{ number_format($detail_saldo->saldo) }}</td>
+                                        <td>{{ $riwayat_pertransaksis->waktu }} WIB</td>
+                                        <td>Rp. {{ number_format($riwayat_pertransaksis->saldo) }}</td>
                                         <td class="text-center">
-                                        <a href="{{ url('saldo/detail') }}/{{ $detail_saldo->user_id }}/{{ $detail_saldo->transaksi_id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail Pertransaksi</a>
+                                            <a href="{{ url('saldo-nasabah/detail') }}/{{ $riwayat_pertransaksis->transaksi_id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail Pertransaksi</a>
                                         </td>
                                     </tr>
                                     @endforeach
