@@ -34,7 +34,7 @@
                                     <?php $no = 1; ?>
                                     @foreach($user as $users)
                                     <tr>
-                                        <td>{{ $no++ }}</td>
+                                        <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $users->name }}</td>
                                         <td>{{ $users->desa }}</td>
                                         <td>{{ $users->nohp }}</td>

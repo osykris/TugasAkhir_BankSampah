@@ -47,7 +47,7 @@
                                         @else
                                         <td>{{ $detail_saldo->tanggal }}</td>
                                         @endif
-                                        <td>{{ $detail_saldo->waktu }}</td>
+                                        <td>{{ $detail_saldo->waktu }} WIB</td>
                                         <td>Rp. {{ number_format($detail_saldo->saldo) }}</td>
                                         <td class="text-center">
                                         <a href="{{ url('saldo/detail') }}/{{ $detail_saldo->user_id }}/{{ $detail_saldo->transaksi_id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail Pertransaksi</a>
