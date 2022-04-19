@@ -22,10 +22,10 @@
                     </div>
                     <div class="card-body">
                         @foreach($saldo as $saldos)
-                        <h2 style="color: green;">Rp. {{ number_format($saldos->saldo_user) }}</h2><br>
                         @if($saldos->saldo_user != null && $saldos->saldo_user != 0)
-                        
-                        
+                        <h2 style="color: green;">Rp. {{ number_format($saldos->saldo_user) }}</h2><br>
+                        @else
+                        <h2 style="color: red;">Rp. {{ number_format($saldos->saldo_user) }}</h2><br>
                         @endif
                         @endforeach
                     </div>
@@ -43,7 +43,6 @@
                                             No.
                                         </th>
                                         <th class="text-center">No. Transaksi</th>
-                                        <th>Nama</th>
                                         <th>Tanggal</th>
                                         <th>Waktu</th>
                                         <th>Saldo</th>
@@ -56,14 +55,13 @@
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td class="text-center">{{ $riwayat_pertransaksis->transaksi_id }}</td>
-                                        <td>{{ $riwayat_pertransaksis->name }}</td>
                                         @if($riwayat_pertransaksis->tanggal == null)
                                         <td style="color: red;">Setiap tanggal 20/bulan</td>
                                         @else
                                         <td>{{ $riwayat_pertransaksis->tanggal }}</td>
                                         @endif
                                         <td>{{ $riwayat_pertransaksis->waktu }} WIB</td>
-                                        <td>Rp. {{ number_format($riwayat_pertransaksis->saldo) }}</td>
+                                        <td style="color: green;"><b>Rp. {{ number_format($riwayat_pertransaksis->saldo) }}</b></td>
                                         <td class="text-center">
                                             <a href="{{ url('saldo-nasabah/detail') }}/{{ $riwayat_pertransaksis->transaksi_id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail Pertransaksi</a>
                                         </td>

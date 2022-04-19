@@ -23,7 +23,6 @@
                                         <th class="text-center">
                                             No.
                                         </th>
-                                        <th>Nama</th>
                                         <th>Metode Penyetoran</th>
                                         <th>Tanggal</th>
                                         <th>Waktu</th>
@@ -36,7 +35,6 @@
                                     @foreach($transaksis as $transaksi)
                                     <tr>
                                         <td class="text-center">{{ $no++ }}</td>
-                                        <td>{{ $transaksi->name }}</td>
                                         <td>{{ $transaksi->metode_penyetoran }}</td>
                                         @if($transaksi->metode_penyetoran == 'Setor Sampah')
                                         <td>{{ $transaksi->tanggal }}</td>
