@@ -77,13 +77,19 @@
       <li class="nav-item ">
         <a href="{{ route('setor-sampah') }}" class="nav-link "><i class="fas fa-fire"></i> <span> Setor Sampah</span></a>
       </li>
+      <li class="nav-item ">
+        <a href="{{ route('riwayat-transaksi') }}" class="nav-link "><i class="fas fa-fire"></i> <span> Riwayat Transaksi</span></a>
+      </li>
+
       <li class="nav-item dropdown">
-        <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Transaksi</span></a>
+        <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Saldo</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="modules-calendar.html">Riwayat Setor</a></li>
           <li><a class="nav-link" href="modules-chartjs.html">Saldo</a></li>
-          <li><a class="nav-link" href="modules-calendar.html">Laporan</a></li>
+          <li><a class="nav-link" href="modules-calendar.html">Riwayat Penarikan</a></li>
         </ul>
+      </li>
+      <li class="nav-item ">
+        <a href="{{ route('setor-sampah') }}" class="nav-link "><i class="fas fa-fire"></i> <span> Laporan</span></a>
       </li>
       @endif
     </ul>

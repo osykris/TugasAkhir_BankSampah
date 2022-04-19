@@ -79,24 +79,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@update');
     Route::get('/hapus-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@delete');
     Route::post('/destroy-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@destroy');
-    
-    //USER (NASABAH)
-
-    //setor sampah (transaksi baru)
-    Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
-    Route::get('/setor-sampah/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail');
-    Route::get('/add-setor', 'App\Http\Controllers\SetorSampahController@index_setor');
-    Route::get('/add-jemput', 'App\Http\Controllers\SetorSampahController@index_jemput');
-    Route::post('tambah-sampah/{id}', 'App\Http\Controllers\SetorSampahController@setor');
-    Route::delete('sampah/hapus/{id}', 'App\Http\Controllers\SetorSampahController@hapus_sampah');
-    Route::post('setor', 'App\Http\Controllers\SetorSampahController@konfirmasi');
-    Route::get('/hapus-setor/', 'App\Http\Controllers\SetorSampahController@delete');
-    Route::post('/destroy-setor/', 'App\Http\Controllers\SetorSampahController@destroy');
-    Route::get('/edit-setor/',  'App\Http\Controllers\SetorSampahController@edit');
-    Route::post('/update-setor/',  'App\Http\Controllers\SetorSampahController@update');
-
-    //data sampah
-    Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
 
     //produk daur ulang
     Route::get('produk-daur-ulang', 'App\Http\Controllers\Admin\ProdukDaurUlangController@index')->name('produk-daur-ulang');
@@ -113,6 +95,28 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-artikel/',  'App\Http\Controllers\Admin\ArtikelController@update');
     Route::get('/hapus-artikel/', 'App\Http\Controllers\Admin\ArtikelController@delete');
     Route::post('/destroy-artikel/', 'App\Http\Controllers\Admin\ArtikelController@destroy');
+    
+    //USER (NASABAH)
+
+    //setor sampah (transaksi baru)
+    Route::get('/setor-sampah', 'App\Http\Controllers\SetorSampahController@index')->name('setor-sampah');
+    Route::get('/setor-sampah/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail');
+    Route::get('/add-setor', 'App\Http\Controllers\SetorSampahController@index_setor');
+    Route::get('/add-jemput', 'App\Http\Controllers\SetorSampahController@index_jemput');
+    Route::post('tambah-sampah/{id}', 'App\Http\Controllers\SetorSampahController@setor');
+    Route::delete('sampah/hapus/{id}', 'App\Http\Controllers\SetorSampahController@hapus_sampah');
+    Route::post('setor', 'App\Http\Controllers\SetorSampahController@konfirmasi');
+    Route::get('/hapus-setor/', 'App\Http\Controllers\SetorSampahController@delete');
+    Route::post('/destroy-setor/', 'App\Http\Controllers\SetorSampahController@destroy');
+    Route::get('/edit-setor/',  'App\Http\Controllers\SetorSampahController@edit');
+    Route::post('/update-setor/',  'App\Http\Controllers\SetorSampahController@update');
+
+    //riwayat transaksi
+    Route::get('/riwayat-transaksi', 'App\Http\Controllers\SetorSampahController@riwayat')->name('riwayat-transaksi');
+    Route::get('/riwayat-transaksi/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail_transaksi');
+
+    //data sampah
+    Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
 });
 
 

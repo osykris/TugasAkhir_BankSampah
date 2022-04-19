@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataSampah;
 use App\Models\DetailTransaksi;
+use App\Models\Saldo;
 use App\Models\Transaksi;
 use App\Models\User;
 use Carbon\Carbon;
@@ -171,4 +172,59 @@ class SetorSampahController extends Controller
 			return $th;
 		}
 	}
+
+    public function riwayat()
+    {
+        if (Auth::user()->hasRole('user')) {
+            $transaksis = DB::table('transaksis')
+                ->join('users', 'transaksis.user_id', '=', 'users.id')
+                ->where('status', '!=', 'Diajukan')
+                ->where('user_id', Auth::user()->id)
+                ->select(
+                    'transaksis.id',
+                    'transaksis.metode_penyetoran',
+                    'transaksis.waktu',
+                    'transaksis.tanggal',
+                    'transaksis.total_berat',
+                    'transaksis.kabupaten',
+                    'transaksis.kecamatan',
+                    'transaksis.desa',
+                    'transaksis.alamat_lengkap',
+                    'transaksis.no_hp',
+                    'transaksis.status',
+                    'transaksis.user_id',
+                    'users.name'
+                )
+                ->get();
+            return view('nasabah.setor-sampah.riwayat.transaksi', compact('transaksis'));
+        }
+    }
+
+    public function detail_transaksi($id)
+    {
+        if (Auth::user()->hasRole('user')) {
+            $transaksis = DB::table('transaksis')
+                ->join('users', 'transaksis.user_id', '=', 'users.id')
+                ->where('transaksis.id', $id)
+                ->where('user_id', Auth::user()->id)
+                ->select(
+                    'transaksis.id',
+                    'transaksis.metode_penyetoran',
+                    'transaksis.waktu',
+                    'transaksis.tanggal',
+                    'transaksis.total_berat',
+                    'transaksis.kabupaten',
+                    'transaksis.kecamatan',
+                    'transaksis.desa',
+                    'transaksis.alamat_lengkap',
+                    'transaksis.no_hp',
+                    'transaksis.status',
+                    'users.name'
+                )
+                ->get();
+            $detail_transaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+            $saldos = Saldo::where('transaksi_id', $id)->get();
+            return view('nasabah.setor-sampah.riwayat.detail-riwayat', compact('transaksis', 'detail_transaksi', 'saldos'));
+        }
+    }
 }
