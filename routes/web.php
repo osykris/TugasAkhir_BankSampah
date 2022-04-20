@@ -77,6 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/saldo', 'App\Http\Controllers\Admin\SaldoController@index')->name('saldo');
     Route::get('/saldo/detail/{id}', 'App\Http\Controllers\Admin\SaldoController@detail_saldo');
     Route::get('/saldo/detail/{id}/{idtransaksi}', 'App\Http\Controllers\Admin\SaldoController@pertransaksi');
+    Route::post('/post-penarikan/',  'App\Http\Controllers\Admin\SaldoController@store');
 
     //saldo tps3r
     Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
@@ -127,6 +128,7 @@ Route::group(['middleware' => ['auth']], function () {
     //saldo
     Route::get('saldo-nasabah', 'App\Http\Controllers\SaldoController@index')->name('saldo-nasabah');
     Route::get('/saldo-nasabah/detail/{idtransaksi}', 'App\Http\Controllers\SaldoController@pertransaksi');
+    Route::post('/metode-penarikan-saldo/{id}', 'App\Http\Controllers\SaldoController@penarikan');
 
 });
 

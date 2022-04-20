@@ -37,7 +37,7 @@
       </div>
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2021 <div class="bullet"></div> By <a href="#">Student of State Polythecnic of Malang</a>
+          Copyright &copy; 2022 <div class="bullet"></div> By <a href="#">Student of State Polythecnic of Malang</a>
         </div>
         <div class="footer-right">
           2.3.0
