@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 use App\Models\ProdukDaurUlang;
 /*
@@ -16,6 +17,7 @@ use App\Models\ProdukDaurUlang;
 Route::get('/', function () {
     return view('welcome', [
         'items' => ProdukDaurUlang::take(4)->get(),
+        'artikels' => Artikel::take(3)->orderBy('created_at', 'desc')->get()
     ]);
 });
 
@@ -26,6 +28,10 @@ Route::get('/tentang-kami', function () {
 Route::get('/kontak', function () {
     return view('contact');
 });
+
+Route::get('/artikels', 'App\Http\Controllers\ArtikelController@index'); 
+Route::get('/artikels/detail/{id}', 'App\Http\Controllers\ArtikelController@detail'); 
+
 
 Route::get('/produk', 'App\Http\Controllers\ProdukDaurUlangController@render');
 Route::get('cari', 'App\Http\Controllers\ProdukDaurUlangController@cari');

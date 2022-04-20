@@ -13,7 +13,7 @@ SEMANDING
     Semanding Berseri
   </h1>
   <p class="mt-3">
-  Kami menawarkan produk hasil daur ulang dan kami juga menerima sampah non-organik 
+    Kami menawarkan produk hasil daur ulang dan kami juga menerima sampah non-organik
     <br />
     untuk kami beli bagi masyarakat Kecamatan Kanigoro, Kabupaten Blitar.
   </p>
@@ -63,20 +63,17 @@ SEMANDING
     <div class="container">
       <div class="section-popular-travel row justify-content-center">
         @foreach($items as $item)
-            <div class="col-sm-6 col-md-4 col-lg-3">
-              <div
-                class="card-travel text-center d-flex flex-column"
-                style="background-image: url('frontend/images/Produk/{{ $item->gambar }}');"
-              >
-                <div class="travel-country" style="color: #FF9E53;">Rp. {{ number_format($item->harga) }}</div>
-                <div class="travel-location"><b> {{ $item->nama }} </b></div>
-                <div class="travel-button mt-auto">
-                  <a href="#" class="btn btn-travel-details px-4">
-                    Beli
-                  </a>
-                </div>
-              </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="card-travel text-center d-flex flex-column" style="background-image: url('frontend/images/Produk/{{ $item->gambar }}');">
+            <div class="travel-country" style="color: #FF9E53;">Rp. {{ number_format($item->harga) }}</div>
+            <div class="travel-location"><b> {{ $item->nama }} </b></div>
+            <div class="travel-button mt-auto">
+              <a href="#" class="btn btn-travel-details px-4">
+                Beli
+              </a>
             </div>
+          </div>
+        </div>
         @endforeach
       </div>
     </div>
@@ -88,17 +85,13 @@ SEMANDING
         <div class="col-md-4">
           <h2>Jenis-Jenis Sampah</h2>
           <p>
-            Sampah yang kami terima berupa 
+            Sampah yang kami terima berupa
             <br />
             sampah anorganik yang sudah di pilah-pilah.
           </p>
         </div>
         <div class="col-md-8 text-center">
-          <img
-            src="frontend/images/bag5.png"
-            alt="Logo Partner"
-            class="img-partner"
-          />
+          <img src="frontend/images/bag5.png" alt="Logo Partner" class="img-partner" />
         </div>
       </div>
     </div>
@@ -119,72 +112,26 @@ SEMANDING
     </div>
   </section>
 
-  <section
-    class="section section-testimonial-content"
-    id="testimonialContent"
-  >
+  <section class="section section-testimonial-content" id="testimonialContent">
     <div class="container">
       <div class="section-popular-travel row justify-content-center">
+        @foreach($artikels as $artikel)
         <div class="col-sm-6 col-md-6 col-lg-4">
           <div class="card card-testimonial text-center">
             <div class="testiominal-content">
-              <img
-                src="frontend/images/testimonial-1.png"
-                alt="User"
-                class="mb-4 rounded-circle"
-              />
-              <h3 class="mb-4">Angga Risky</h3>
+              <img src="{{ url('frontend/images/Artikel') }}/{{ $artikel->gambar_artikel }}" width="100px"  hight="50px" alt="User" class="mb-4 rounded-circle" />
+              <h3 class="mb-4">{{ $artikel->user->name }}</h3>
               <p class="testimonial">
-                “ It was glorious and I could not stop to say wohooo for
-                every single moment Dankeeeeee “
+                “ {{  substr($artikel->content, 0, 75) }} ...“ <a style="font-size: 20px;" href="{{ url('artikels/detail') }}/{{ $artikel->id }}">Baca Selengkapnya</a>
               </p>
             </div>
             <hr />
             <p class="trip-to mt-2">
-              Trip to Ubud
+              {{ $artikel->title }}
             </p>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="card card-testimonial text-center">
-            <div class="testiominal-content">
-              <img
-                src="frontend/images/testimonial-2.png"
-                alt="User"
-                class="mb-4 rounded-circle"
-              />
-              <h3 class="mb-4">Shayna</h3>
-              <p class="testimonial">
-                “ The trip was amazing and I saw something beautiful in that
-                Island that makes me want to learn more “
-              </p>
-            </div>
-            <hr />
-            <p class="trip-to mt-2">
-              Trip to Nusa Penida
-            </p>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4">
-          <div class="card card-testimonial text-center">
-            <div class="testiominal-content">
-              <img
-                src="frontend/images/testimonial-3.png"
-                alt="User"
-                class="mb-4 rounded-circle"
-              />
-              <h3 class="mb-4">Shabrina</h3>
-              <p class="testimonial">
-                “ I loved it when the waves was shaking harder — I was
-                scared too “
-              </p>
-            </div>
-            <hr />
-            <p class="trip-to mt-2">
-              Trip to Karimun Jawa
-            </p>
-          </div>
-        </div>
+        @endforeach
       </div>
       <div class="row">
         <div class="col-12 text-center">
