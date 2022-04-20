@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 use App\Models\ProdukDaurUlang;
 /*
@@ -16,6 +17,7 @@ use App\Models\ProdukDaurUlang;
 Route::get('/', function () {
     return view('welcome', [
         'items' => ProdukDaurUlang::take(4)->get(),
+        'artikels' => Artikel::take(3)->orderBy('created_at', 'desc')->get()
     ]);
 });
 
@@ -26,6 +28,10 @@ Route::get('/tentang-kami', function () {
 Route::get('/kontak', function () {
     return view('contact');
 });
+
+Route::get('/artikels', 'App\Http\Controllers\ArtikelController@index'); 
+Route::get('/artikels/detail/{id}', 'App\Http\Controllers\ArtikelController@detail'); 
+
 
 Route::get('/produk', 'App\Http\Controllers\ProdukDaurUlangController@render');
 Route::get('cari', 'App\Http\Controllers\ProdukDaurUlangController@cari');
@@ -71,6 +77,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/saldo', 'App\Http\Controllers\Admin\SaldoController@index')->name('saldo');
     Route::get('/saldo/detail/{id}', 'App\Http\Controllers\Admin\SaldoController@detail_saldo');
     Route::get('/saldo/detail/{id}/{idtransaksi}', 'App\Http\Controllers\Admin\SaldoController@pertransaksi');
+    Route::post('/post-penarikan/',  'App\Http\Controllers\Admin\SaldoController@store');
 
     //saldo tps3r
     Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
@@ -121,6 +128,7 @@ Route::group(['middleware' => ['auth']], function () {
     //saldo
     Route::get('saldo-nasabah', 'App\Http\Controllers\SaldoController@index')->name('saldo-nasabah');
     Route::get('/saldo-nasabah/detail/{idtransaksi}', 'App\Http\Controllers\SaldoController@pertransaksi');
+    Route::post('/metode-penarikan-saldo/{id}', 'App\Http\Controllers\SaldoController@penarikan');
 
 });
 

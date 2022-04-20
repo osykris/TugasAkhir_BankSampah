@@ -46,4 +46,6 @@ class SaldoController extends Controller
             return view('admin.saldo.pertransaksi', compact('detail_transaksis', 'saldos'));
         }
     }
+
+
 }
