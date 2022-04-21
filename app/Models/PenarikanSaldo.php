@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class PenarikanSaldo extends Model
 {
+    protected $table = 'penarikan_saldos';
+    protected $primaryKey = 'id';
+    protected $fillable = [
+        'user_id', 'nama_pengirim', 'nominal', 'bank', 'tanggal', 'bukti_pembayaran', 'metode_penarikan'
+    ];
+    public $timestamps = false;
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

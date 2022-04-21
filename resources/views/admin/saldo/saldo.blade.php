@@ -50,9 +50,13 @@
                                         @endif
                                         <td>{{ $users->metode_tarik_saldo }}</td>
                                         <td class="text-center">
+                                            <a href="{{ url('saldo/detail') }}/{{ $users->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Riwayat</a>
                                             @if($users->saldo_user != 0)
-                                            <a href="{{ url('saldo/detail') }}/{{ $users->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
-                                            <button data-toggle="modal" data-target="#myModal" class="btn btn-icon icon-left btn-warning"><i class="fas fa-edit"></i> Tarik Saldo</button>
+                                            @if($users->metode_tarik_saldo == 'Transfer Bank')
+                                            <button onclick="tarik('{{ $users->id }}')" class="btn btn-icon icon-left btn-warning"><i class="fas fa-edit"></i> Tarik Transfer</button>
+                                            @else
+                                            <button onclick="tarik_cash('{{ $users->id }}')" class="btn btn-icon icon-left btn-warning"><i class="fas fa-edit"></i> Tarik Cash</button>
+                                            @endif
                                             @endif
                                         </td>
                                     </tr>
@@ -66,29 +70,115 @@
         </div>
     </div>
 </section>
-<!-- Modal Pengajuan Penarikkan -->
+<!-- Modal Penarikkan Transfer -->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Ajukan Metode Penarikan Saldo</h5>
+                <h5 class="modal-title">Penarikan Saldo Transfer Bank</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ url('/metode-penarikan-saldo') }}/{{ Auth::user()->id }}">
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="status_edit">Metode Penarikan Saldo</label>
-                        <select class="form-control" name="metode_tarik_saldo" id="metode_tarik_saldo" required>
-                            <option value="" selected disabled>Pilih Metode Penarikan</option>
-                            <option value="Transfer Bank">Transfer Bank</option>
-                            <option value="Cash">Cash</option>
-                        </select>
+                <form id="tarik">
+                    <input type="hidden" name="id_edit" id="id_edit">
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="metode_tarik_saldo_edit">Metode Penarikan</label>
+                            <input readonly type="text" class="form-control" name="metode_tarik_saldo_edit" id="metode_tarik_saldo_edit">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="nama_pengirim">Nama Pengirim</label>
+                            <input type="text" class="form-control" placeholder="Masukkan Nama Pengirim" name="nama_pengirim" id="nama_pengirim">
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" id="update-status-data">Update</button>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="nominal">Nominal</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp. </span>
+                                </div>
+                                <input readonly type="number" class="form-control" name="saldo_user_edit" id="saldo_user_edit">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">,00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="date" class="form-control" placeholder="Masukkan Tanggal Transfer" name="tanggal" id="tanggal">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="bank">Bank</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Bank Pengirim" name="bank" id="bank">
+                    </div>
+                    <div class="form-group">
+                        <label for="bukti_pembayaran">Bukti Transfer</label>
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <input value="Upload" placeholder="Masukkan Bukti Transfer" type="file" name="bukti_pembayaran" class="form-control @error('bukti_pembayaran') is-invalid @enderror">
+                                @error('bukti_pembayaran')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="store">Kirim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-form">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Penarikkan Cash -->
+<div class="modal fade" id="myModalCash" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Penarikan Saldo Cash</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="tarik-cash">
+                    <input type="hidden" name="id_editt" id="id_editt">
+                    <div class="form-group">
+                        <label for="metode_tarik_saldo_edit">Metode Penarikan</label>
+                        <input readonly type="text" class="form-control" name="metode_tarik_saldo_editt" id="metode_tarik_saldo_editt">
+                    </div>
+                    <div class="row">
+
+                        <div class="form-group col-6">
+                            <label for="nominal">Nominal</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp. </span>
+                                </div>
+                                <input readonly type="number" class="form-control" name="saldo_user_editt" id="saldo_user_editt">
+                                <div class="input-group-append">
+                                    <span class="input-group-text">,00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="date" class="form-control" placeholder="Masukkan Tanggal Transfer" name="tanggal" id="tanggal">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="store-cash">Kirim</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-form-cash">Tutup</button>
             </div>
         </div>
     </div>

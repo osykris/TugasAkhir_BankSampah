@@ -5,11 +5,11 @@
         <div class="section-header-back">
             <a href="{{ route('saldo') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
         </div>
-        <h1>Detail Saldo Nasabah</h1>
+        <h1>Riwayat Saldo Nasabah </h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('saldo') }}">Semua Saldo</a></div>
-            <div class="breadcrumb-item"><a href="#">Detail Saldo</a></div>
+            <div class="breadcrumb-item"><a href="#">Riwayat Saldo</a></div>
         </div>
     </div>
     <div class="section-body">
@@ -17,7 +17,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Detail Saldo</h4>
+                        <h4>Semua Transaksi</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

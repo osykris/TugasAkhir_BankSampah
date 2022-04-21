@@ -12,7 +12,6 @@ class SaldoController extends Controller
 {
     public function index()
     {
-
         if (Auth::user()->hasRole('user')) {
 
             $saldo = DB::table('users')->where('id', Auth::user()->id)->get();
@@ -45,5 +44,15 @@ class SaldoController extends Controller
         $user->metode_tarik_saldo = $request->metode_tarik_saldo;
         $user->update();
         return redirect('saldo-nasabah');
+    }
+
+    public function riwayat_penarikan()
+    {
+        if (Auth::user()->hasRole('user')) {
+            $penarikan = DB::table('penarikan_saldos')
+                ->where('penarikan_saldos.user_id', Auth::user()->id)
+                ->get();
+            return view('nasabah.saldo.riwayat-penarikan', compact('penarikan'));
+        }
     }
 }

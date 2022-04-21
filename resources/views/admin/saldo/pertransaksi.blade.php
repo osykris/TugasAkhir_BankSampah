@@ -10,7 +10,7 @@
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('saldo') }}">Semua Saldo</a></div>
-            <div class="breadcrumb-item"><a href="{{ url('saldo/detail') }}/{{ $saldo->user_id }}">Detail Saldo</a></div>
+            <div class="breadcrumb-item"><a href="{{ url('saldo/detail') }}/{{ $saldo->user_id }}">Riwayat Saldo</a></div>
             <div class="breadcrumb-item active"><a href="{{ url('saldo/detail') }}/{{ $saldo->user_id }}/{{ $saldo->transaksi_id }}">Detail Pertransaksi</a></div>
             @endforeach
         </div>
