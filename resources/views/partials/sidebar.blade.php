@@ -27,7 +27,7 @@
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="{{ route('saldo') }}">Saldo</a></li>
-          <li><a class="nav-link" href="layout-transparent.html">Riwayat Penarikan</a></li>
+          <li><a class="nav-link" href="{{ route('penarikan-nasabah') }}">Riwayat Penarikan</a></li>
         </ul>
       </li>
       <li class="nav-item">
@@ -81,7 +81,7 @@
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
         <ul class="dropdown-menu">
           <li><a class="nav-link" href="{{ route('saldo-nasabah') }}">Saldo</a></li>
-          <li><a class="nav-link" href="modules-calendar.html">Riwayat Penarikan</a></li>
+          <li><a class="nav-link" href="{{ route('penarikan-riwayat') }}">Riwayat Penarikan</a></li>
         </ul>
       </li>
       <li class="nav-item ">

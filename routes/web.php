@@ -78,6 +78,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/saldo/detail/{id}', 'App\Http\Controllers\Admin\SaldoController@detail_saldo');
     Route::get('/saldo/detail/{id}/{idtransaksi}', 'App\Http\Controllers\Admin\SaldoController@pertransaksi');
     Route::post('/post-penarikan/',  'App\Http\Controllers\Admin\SaldoController@store');
+    Route::get('/get-penarikan/',  'App\Http\Controllers\Admin\SaldoController@get');
+    Route::get('/penarikan-nasabah/detail/{id}', 'App\Http\Controllers\Admin\SaldoController@riwayat_tarik')->name('riwayat-penarikan');
+    Route::get('/saldo/bukti/',  'App\Http\Controllers\Admin\SaldoController@gambar');
+    Route::get('/penarikan-nasabah/',  'App\Http\Controllers\Admin\SaldoController@data_nasabah')->name('penarikan-nasabah');
+    Route::post('/post-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@store_cash');
+    Route::get('/get-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@get_cash');
 
     //saldo tps3r
     Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
@@ -129,6 +135,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('saldo-nasabah', 'App\Http\Controllers\SaldoController@index')->name('saldo-nasabah');
     Route::get('/saldo-nasabah/detail/{idtransaksi}', 'App\Http\Controllers\SaldoController@pertransaksi');
     Route::post('/metode-penarikan-saldo/{id}', 'App\Http\Controllers\SaldoController@penarikan');
+    Route::get('/penarikan-riwayat/',  'App\Http\Controllers\SaldoController@riwayat_penarikan')->name('penarikan-riwayat');
 
 });
 

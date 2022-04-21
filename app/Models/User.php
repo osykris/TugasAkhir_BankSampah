@@ -26,6 +26,7 @@ class User extends Authenticatable
         'desa',
         'nohp',
         'alamat_lengkap',
+        'saldo_user'
     ];
 
     /**

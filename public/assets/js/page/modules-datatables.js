@@ -28,6 +28,10 @@ $("[data-checkboxes]").each(function() {
   });
 });
 
+$("#riwayat-tarik").dataTable();
+
+$("#penarikan-nasabah").dataTable();
+
 $("#table-1").dataTable();
 $('#add-sampah').click(function() {
   if ($("#form-sampah")[0].checkValidity()) {
@@ -762,6 +766,123 @@ function del_data_artikel(id) {
           $('#ModalHapusArtikel').modal('hide');
           // remove card data
 
+      },
+  });
+}
+
+function tarik(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/get-penarikan",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#myModal').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#metode_tarik_saldo_edit').val(response.data.metode_tarik_saldo);
+      $('#saldo_user_edit').val(response.data.saldo_user);
+    },
+  });
+}
+
+function tarik_cash(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/get-penarikanCash",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#myModalCash').modal('show');
+      // fill form in modal
+      $('#id_editt').val(response.data.id);
+      $('#metode_tarik_saldo_editt').val(response.data.metode_tarik_saldo);
+      $('#saldo_user_editt').val(response.data.saldo_user);
+    },
+  });
+}
+
+$('#store').click(function() {
+  if ($("#tarik")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("tarik"));
+    $.ajax({
+      type: "POST",
+      url: "/post-penarikan",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-form').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#tarik")[0].reportValidity();
+  }
+});
+
+$('#store-cash').click(function() {
+  if ($("#tarik-cash")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("tarik-cash"));
+    $.ajax({
+      type: "POST",
+      url: "/post-penarikanCash",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-form-cash').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#tarik-cash")[0].reportValidity();
+  }
+});
+
+function gambar(id) {
+  $("#gambar-src").remove();
+  $.ajax({
+      type: "GET",
+      url: "/saldo/bukti",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#modalBukti').modal('show');
+
+          // fill form in modal
+          var html = `<img src="/frontend/images/Bukti-TF/`+ response.data.bukti_pembayaran +`" alt="" width="100%" id="gambar-src">`;
+          $('#bukti').append(html);
       },
   });
 }
