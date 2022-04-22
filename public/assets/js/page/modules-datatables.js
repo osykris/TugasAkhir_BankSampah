@@ -32,6 +32,8 @@ $("#riwayat-tarik").dataTable();
 
 $("#penarikan-nasabah").dataTable();
 
+$("#detail-nasabah-saldo").dataTable();
+
 $("#table-1").dataTable();
 $('#add-sampah').click(function() {
   if ($("#form-sampah")[0].checkValidity()) {
@@ -288,7 +290,7 @@ $('#update-status-data').click(function() {
       success: function(response) {
         console.log(response);
         $('#close-status-edit').click();
-         top.location.href="/riwayat";
+        window.location.reload();
       }
     });
   } else {

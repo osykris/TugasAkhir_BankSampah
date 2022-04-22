@@ -5,7 +5,7 @@
 <section class="section">
     <div class="section-header">
          <div class="section-header-back">
-            <a href="{{ route('riwayat') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="{{ route('riwayat-transaksiNasabah') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Tambah Jenis Sampah</h1>
         <div class="section-header-button">
@@ -15,7 +15,7 @@
         </div>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('riwayat') }}">Riwayat</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('riwayat-transaksiNasabah') }}">Riwayat</a></div>
             <div class="breadcrumb-item active"><a href="#">Tambah Sampah</a></div>
         </div>
     </div>

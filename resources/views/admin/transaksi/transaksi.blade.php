@@ -45,11 +45,20 @@
                                         @endif
                                         <td>{{ $transaksi->waktu }} WIB</td>
                                         <td>
+                                            @if($transaksi->status == 'Diterima')
+                                            <div class="badge badge-success">{{ $transaksi->status }}</div>
+                                            @elseif($transaksi->status == 'Diajukan')
                                             <div class="badge badge-warning">{{ $transaksi->status }}</div>
+                                            @endif
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn btn-info" onclick="edit_statuss('{{ $transaksi->id }}')" id="update-status"><i class="fas fa-edit"></i></button>
                                             <a href="{{ url('transaksi/detail') }}/{{ $transaksi->id }}" class="btn btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
+                                            @if($transaksi->status == 'Diajukan')
+                                            <button class="btn btn-info" onclick="edit_statuss('{{ $transaksi->id }}')" id="update-status"><i class="fas fa-edit"></i></button>
+                                            @endif
+                                            @if($transaksi->status == 'Diterima')
+                                            <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}/{{ $transaksi->user_id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
+                                            @endif
                                         </td>
                                     </tr>
                                     @endforeach

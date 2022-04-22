@@ -1,6 +1,6 @@
 <div class="main-sidebar">
   <aside id="sidebar-wrapper">
-  <br>
+    <br>
     <div class="sidebar-brand">
       <a class="text-light" href="{{ route('dashboard') }}"><img src="../frontend/images/throwing-trash-fill.png" height="80" alt=""><span>SEMANDING</span></a>
     </div>
@@ -17,11 +17,16 @@
       <li class="nav-item">
         <a href="{{ route('user') }}" class="nav-link"><i class="fas fa-users"></i> <span>Nasabah</span></a>
       </li>
-      <li class="nav-item ">
-        <a href="{{ route('transaksi-masuk') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
-      </li>
-      <li class="nav-item ">
-        <a href="{{ route('riwayat') }}" class="nav-link "><i class="fas fa-calculator"></i> <span>Riwayat Setoran</span></a>
+      <li class="nav-item dropdown">
+      <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-calculator"></i> <span>Transaksi</span></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="{{ route('transaksi-masuk') }}" class="nav-link ">Transaksi Masuk</a>
+          </li>
+          <li>
+            <a href="{{ route('riwayat-transaksiNasabah') }}" class="nav-link ">Riwayat Transaksi</a>
+          </li>
+        </ul>
       </li>
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>

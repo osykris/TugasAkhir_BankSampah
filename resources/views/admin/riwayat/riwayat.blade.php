@@ -2,10 +2,14 @@
 @section('content')
 <section class="section">
     <div class="section-header">
+        <div class="section-header-back">
+            <a href="{{ route('riwayat-transaksiNasabah') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        </div>
         <h1>Riwayat Transaksi</h1>
         <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="{{ route('riwayat') }}">Semua Riwayat</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('riwayat-transaksiNasabah') }}">Semua Riwayat Nasabah</a></div>
+            <div class="breadcrumb-item active"><a href="">Detail Riwayat</a></div>
         </div>
     </div>
     <div class="section-body">
@@ -56,9 +60,6 @@
                                         <td class="text-center">
                                             <div class="buttons">
                                                 <a href="{{ url('transaksi/detail') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
-                                                @if($transaksi->status == 'Diterima')
-                                                <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}/{{ $transaksi->user_id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
-                                                @endif
                                             </div>
                                         </td>
                                     </tr>
