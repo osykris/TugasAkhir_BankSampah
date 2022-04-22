@@ -3,6 +3,9 @@
 use App\Models\Artikel;
 use Illuminate\Support\Facades\Route;
 use App\Models\ProdukDaurUlang;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +20,9 @@ use App\Models\ProdukDaurUlang;
 Route::get('/', function () {
     return view('welcome', [
         'items' => ProdukDaurUlang::take(4)->get(),
+        'count_nasabah' =>  DB::table('users')
+        ->join('role_user', 'users.id', '=', 'role_user.user_id')
+        ->where('role_user.role_id', '2')->count(),
         'artikels' => Artikel::take(3)->orderBy('created_at', 'desc')->get()
     ]);
 });
@@ -61,12 +67,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/transaksi/detail/{id}', 'App\Http\Controllers\Admin\TransaksiController@detail');
 
     //riwayat
-    Route::get('/riwayat', 'App\Http\Controllers\Admin\TransaksiController@riwayat')->name('riwayat');
     Route::get('/tambah-sampah/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@index_sampah');
     Route::post('/tambah-sampah/save/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@store');
     Route::get('/hapus-tambah/', 'App\Http\Controllers\Admin\TransaksiController@delete_tambah');
     Route::post('/destroy-tambah/', 'App\Http\Controllers\Admin\TransaksiController@destroy_tambah');
     Route::post('/transaksi/selesai/{id}/{iduser}', 'App\Http\Controllers\Admin\TransaksiController@konfirmasi');
+    Route::get('/riwayat-transaksiNasabah/',  'App\Http\Controllers\Admin\TransaksiController@data_nasabah')->name('riwayat-transaksiNasabah');
+    Route::get('/riwayat-transaksiNasabah/detail/{id}', 'App\Http\Controllers\Admin\TransaksiController@riwayat')->name('riwayat-penarikan');
 
     //nasabah
     Route::get('/user', 'App\Http\Controllers\Admin\NasabahController@index')->name('user');

@@ -113,7 +113,7 @@
                     <div class="form-group col-6">
                       <label>Desa</label>
                       <select class="form-control selectric" name="desa">
-                      <option value="Pilih Desa">Pilih Desa</option>
+                      <option value="Pilih Desa" disabled selected>Pilih Desa</option>
                         <option value="Bangle">Bangle</option>
                         <option value="Gaprang">Gaprang</option>
                         <option value="Gogodeso">Gogodeso</option>

@@ -24,7 +24,8 @@ class TransaksiController extends Controller
         if (Auth::user()->hasRole('admin')) {
             $transaksis = DB::table('transaksis')
                 ->join('users', 'transaksis.user_id', '=', 'users.id')
-                ->where('status', 'Diajukan')
+                ->where('status', '!=' , 'Selesai')
+                ->where('status', '!=' , 'Ditolak')
                 ->select(
                     'transaksis.id',
                     'transaksis.metode_penyetoran',
@@ -37,6 +38,7 @@ class TransaksiController extends Controller
                     'transaksis.alamat_lengkap',
                     'transaksis.no_hp',
                     'transaksis.status',
+                    'transaksis.user_id',
                     'users.name'
                 )
                 ->get();
@@ -44,11 +46,12 @@ class TransaksiController extends Controller
         }
     }
 
-    public function riwayat()
+    public function riwayat($id)
     {
         if (Auth::user()->hasRole('admin')) {
             $transaksis = DB::table('transaksis')
                 ->join('users', 'transaksis.user_id', '=', 'users.id')
+                ->where('status', '!=', 'Diterima')
                 ->where('status', '!=', 'Diajukan')
                 ->select(
                     'transaksis.id',
@@ -65,6 +68,7 @@ class TransaksiController extends Controller
                     'transaksis.user_id',
                     'users.name'
                 )
+                ->where('transaksis.user_id', $id)
                 ->get();
             return view('admin.riwayat.riwayat', compact('transaksis'));
         }
@@ -124,7 +128,8 @@ class TransaksiController extends Controller
                     'transaksis.alamat_lengkap',
                     'transaksis.no_hp',
                     'transaksis.status',
-                    'users.name'
+                    'users.name',
+                    'transaksis.user_id'
                 )
                 ->get();
             $detail_transaksi = DetailTransaksi::where('transaksi_id', $id)->get();
@@ -257,6 +262,15 @@ class TransaksiController extends Controller
             ], 200);
         } catch (\Throwable $th) {
             return $th;
+        }
+    }
+
+    public function data_nasabah(){
+        if (Auth::user()->hasRole('admin')) {
+            $user = DB::table('users')
+            ->join('role_user', 'users.id', '=', 'role_user.user_id')
+            ->where('role_user.role_id', '2')->get();
+            return view('admin.riwayat.data-user', compact('user'));
         }
     }
 }

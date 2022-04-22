@@ -54,7 +54,7 @@
                                             @if($users->saldo_user != 0)
                                             @if($users->metode_tarik_saldo == 'Transfer Bank')
                                             <button onclick="tarik('{{ $users->id }}')" class="btn btn-icon icon-left btn-warning"><i class="fas fa-edit"></i> Tarik Transfer</button>
-                                            @else
+                                            @elseif($users->metode_tarik_saldo == 'Cash')
                                             <button onclick="tarik_cash('{{ $users->id }}')" class="btn btn-icon icon-left btn-warning"><i class="fas fa-edit"></i> Tarik Cash</button>
                                             @endif
                                             @endif
@@ -171,7 +171,7 @@
                         </div>
                         <div class="form-group col-6">
                             <label for="tanggal">Tanggal</label>
-                            <input type="date" class="form-control" placeholder="Masukkan Tanggal Transfer" name="tanggal" id="tanggal">
+                            <input type="date" class="form-control" placeholder="Masukkan Tanggal Transfer" name="tanggal" id="tanggal" required>
                         </div>
                     </div>
                 </form>

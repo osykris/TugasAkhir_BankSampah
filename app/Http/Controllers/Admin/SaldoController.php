@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DetailTransaksi;
 use App\Models\PenarikanSaldo;
 use App\Models\Saldo;
+use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +31,7 @@ class SaldoController extends Controller
                 ->join('transaksis', 'saldos.transaksi_id', '=', 'transaksis.id')
                 ->join('users', 'users.id', '=', 'saldos.user_id')
                 ->select('saldos.transaksi_id', 'saldos.user_id', 'saldos.saldo', 'transaksis.tanggal', 'transaksis.waktu', 'saldos.id', 'users.name')
-                ->where('saldos.user_id', $id)
+                ->where('saldos.user_id', $id)->where('transaksis.check_trans', '1')
                 ->get();
             return view('admin.saldo.detail', compact('detail_saldos'));
         }
@@ -93,6 +95,20 @@ class SaldoController extends Controller
             ];
 
             User::where('id', $id)->update($data);
+
+            $data_check = [
+                'check_trans' =>  '0',
+            ];
+            
+            Transaksi::where('user_id', $id)->update($data_check);
+
+            $penarikan = PenarikanSaldo::where('user_id', $id)->where('check_tarik', '0')->first();
+
+            $data_idtarik = [
+                'penarikan_id' =>  $penarikan->id,
+            ];
+
+            Saldo::where('user_id', $id)->update($data_idtarik);
 
             return response()->json([
                 'data' => $store,
@@ -174,6 +190,20 @@ class SaldoController extends Controller
             ];
 
             User::where('id', $id)->update($data);
+
+            $data_check = [
+                'check_trans' =>  '0',
+            ];
+            
+            Transaksi::where('user_id', $id)->update($data_check);
+
+            $penarikan = PenarikanSaldo::where('user_id', $id)->first();
+
+            $data_idtarik = [
+                'penarikan_id' =>  $penarikan->id,
+            ];
+
+            Saldo::where('user_id', $id)->update($data_idtarik);
 
             return response()->json([
                 'data' => $store,

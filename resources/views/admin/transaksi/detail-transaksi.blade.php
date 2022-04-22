@@ -7,15 +7,24 @@
             @if($transaksi->status == 'Diajukan')
             <a href="{{ route('transaksi-masuk') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             @else
-            <a href="{{ route('riwayat') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="{{ url('riwayat-transaksiNasabah/detail') }}/{{ $transaksi->user_id }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
             @endif
             @endforeach
         </div>
         <h1>Detail Setor</h1>
         <div class="section-header-breadcrumb">
+        @foreach($transaksis as $transaksi)
+            @if($transaksi->status == 'Diajukan')
             <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('transaksi-masuk') }}">Semua Setoran</a></div>
             <div class="breadcrumb-item active"><a href="#">Detail Setor</a></div>
+            @else
+            <div class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></div>
+            <div class="breadcrumb-item"><a href="{{ route('riwayat-transaksiNasabah') }}">Semua Riwayat Nasabah</a></div>
+            <div class="breadcrumb-item"><a href="">Detail Riwayat</a></div>
+            <div class="breadcrumb-item active"><a href="">Detail Transaksi</a></div>
+            @endif
+            @endforeach
         </div>
     </div>
     <div class="col-md-12">

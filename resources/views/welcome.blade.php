@@ -26,15 +26,15 @@ SEMANDING
   <div class="container">
     <section class="section-stats row justify-content-center" id="stats">
       <div class="col-3 col-md-2 stats-detail">
-        <h2>20K</h2>
+        <h2>{{ $count_nasabah }}</h2>
         <p>Nasabah</p>
       </div>
       <div class="col-3 col-md-2 stats-detail">
-        <h2>12</h2>
+        <h2>11</h2>
         <p>Desa</p>
       </div>
       <div class="col-3 col-md-2 stats-detail">
-        <h2>100</h2>
+        <h2>20</h2>
         <p>Anggota Tim</p>
       </div>
       <div class="col-3 col-md-2 stats-detail">
