@@ -102,14 +102,6 @@ class SaldoController extends Controller
             
             Transaksi::where('user_id', $id)->update($data_check);
 
-            $penarikan = PenarikanSaldo::where('user_id', $id)->where('check_tarik', '0')->first();
-
-            $data_idtarik = [
-                'penarikan_id' =>  $penarikan->id,
-            ];
-
-            Saldo::where('user_id', $id)->update($data_idtarik);
-
             return response()->json([
                 'data' => $store,
                 'message' => 'Berhasil Disimpan',
@@ -197,13 +189,6 @@ class SaldoController extends Controller
             
             Transaksi::where('user_id', $id)->update($data_check);
 
-            $penarikan = PenarikanSaldo::where('user_id', $id)->first();
-
-            $data_idtarik = [
-                'penarikan_id' =>  $penarikan->id,
-            ];
-
-            Saldo::where('user_id', $id)->update($data_idtarik);
 
             return response()->json([
                 'data' => $store,
