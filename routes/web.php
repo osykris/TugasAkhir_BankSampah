@@ -34,6 +34,9 @@ Route::get('/tentang-kami', function () {
 Route::get('/kontak', function () {
     return view('contact');
 });
+Route::post('kontak', 'App\Http\Controllers\KontakController@post');
+Route::get('/hapus-pesan/', 'App\Http\Controllers\KontakController@delete');
+Route::post('/destroy-pesan/', 'App\Http\Controllers\KontakController@destroy');
 
 Route::get('/artikels', 'App\Http\Controllers\ArtikelController@index'); 
 Route::get('/artikels/detail/{id}', 'App\Http\Controllers\ArtikelController@detail'); 
@@ -93,7 +96,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@get_cash');
 
     //saldo tps3r
-    Route::get('saldo-tps3r', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('saldo-tps3r');
+    Route::get('/tps3r-masuk', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('tps3r-masuk');
     Route::post('/add-tps3r/save', 'App\Http\Controllers\Admin\SaldoTPS3RController@store');
     Route::get('/edit-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@edit');
     Route::post('/update-saldo-tps3r/',  'App\Http\Controllers\Admin\SaldoTPS3RController@update');
