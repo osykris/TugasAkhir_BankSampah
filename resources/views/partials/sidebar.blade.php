@@ -36,7 +36,7 @@
         </ul>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link"><i class="fas fa-chart-line"></i> <span>Penjualan</span></a>
+        <a href="{{ route('penjualan-sampah') }}" class="nav-link"><i class="fas fa-chart-line"></i> <span>Penjualan</span></a>
       </li>
 
       <li class="nav-item dropdown">
@@ -59,11 +59,25 @@
       </li>
 
       <li class="menu-header">TPS3R</li>
-      <li class="nav-item ">
+      <!-- <li class="nav-item ">
         <a href="{{ route('saldo-tps3r') }}" class="nav-link "><i class="far fa-money-bill-alt"></i> <span>Saldo</span></a>
       </li>
       <li class="nav-item ">
         <a href="#" class="nav-link "><i class="fas fa-user-alt"></i> <span>Pemasok</span></a>
+      </li> -->
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="{{ route('saldo-tps3r') }}">Saldo Masuk</a></li>
+          <li><a class="nav-link" href="#">Saldo Keluar</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Pengguna Jasa</span></a>
+        <ul class="dropdown-menu">
+          <li><a class="nav-link" href="#">Pembayaran Bulanan</a></li>
+          <li><a class="nav-link" href="{{ route('pengguna-tps3r') }}">Tambah Pengguna</a></li>
+        </ul>
       </li>
       @endif
       @if (Auth::user()->hasRole('user'))

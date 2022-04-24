@@ -115,6 +115,22 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-artikel/',  'App\Http\Controllers\Admin\ArtikelController@update');
     Route::get('/hapus-artikel/', 'App\Http\Controllers\Admin\ArtikelController@delete');
     Route::post('/destroy-artikel/', 'App\Http\Controllers\Admin\ArtikelController@destroy');
+
+    //penjualan sampah
+    Route::get('penjualan-sampah', 'App\Http\Controllers\Admin\PenjualanSampahController@index')->name('penjualan-sampah');
+    Route::post('/add-jualsampah/save', 'App\Http\Controllers\Admin\PenjualanSampahController@store');
+    Route::get('/edit-jualsampah/',  'App\Http\Controllers\Admin\PenjualanSampahController@edit');
+    Route::post('/update-jualsampah/',  'App\Http\Controllers\Admin\PenjualanSampahController@update');
+    Route::get('/hapus-jualsampah/', 'App\Http\Controllers\Admin\PenjualanSampahController@delete');
+    Route::post('/destroy-jualsampah/', 'App\Http\Controllers\Admin\PenjualanSampahController@destroy');
+
+    //pengguna jasa tps3r
+    Route::get('pengguna-tps3r', 'App\Http\Controllers\Admin\UserTPS3RController@index')->name('pengguna-tps3r');
+    Route::post('/add-usertps3r/save', 'App\Http\Controllers\Admin\UserTPS3RController@store');
+    Route::get('/edit-user-tps3r/',  'App\Http\Controllers\Admin\UserTPS3RController@edit');
+    Route::post('/update-user-tps3r/',  'App\Http\Controllers\Admin\UserTPS3RController@update');
+    Route::get('/hapus-user-tps3r/', 'App\Http\Controllers\Admin\UserTPS3RController@delete');
+    Route::post('/destroy-user-tps3r/', 'App\Http\Controllers\Admin\UserTPS3RController@destroy');
     
     //USER (NASABAH)
 

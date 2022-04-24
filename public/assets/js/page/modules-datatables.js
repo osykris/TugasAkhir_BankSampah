@@ -888,3 +888,251 @@ function gambar(id) {
       },
   });
 }
+
+$('#add-usertps3r').click(function() {
+  if ($("#form-usertps3r")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-usertps3r"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-usertps3r/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-usertps3r')[0].reset();
+        $('#close-usertps3r').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-usertps3r")[0].reportValidity();
+  }
+});
+
+$("#pengguna_tps3r").dataTable();
+
+function edit_usertps3r(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-user-tps3r",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalPenggunaTPS3RUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#name_user_edit').val(response.data.name_user);
+      $('#full_address_edit').val(response.data.full_address);
+      $('#village_edit').val(response.data.village);
+      $('#district_edit').val(response.data.district);
+      $('#city_edit').val(response.data.city);
+      $('#phone_edit').val(response.data.phone);
+    },
+  });
+}
+
+$('#update-usertps3r').click(function() {
+  if ($("#form-usertps3r-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-usertps3r-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-user-tps3r/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-usertps3r-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-usertps3r")[0].reportValidity();
+  }
+});
+
+function hapus_usertps3r(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-user-tps3r",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-usertps3r').attr('onclick', `del_data_usertps3r(` + response.data + `)`);
+
+          $('#ModalHapusPenggunaTPS3R').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_usertps3r(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-user-tps3r",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusPenggunaTPS3R').modal('hide');
+          // remove card data
+
+      },
+  });
+}
+
+$("#penjualansampah").dataTable();
+$('#add-jualsampah').click(function() {
+  if ($("#form-jualsampah")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-jualsampah"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-jualsampah/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-jualsampah')[0].reset();
+        $('#close-jualsampah').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-jualsampah")[0].reportValidity();
+  }
+});
+
+function edit_jualsampah(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-jualsampah",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalPenjualanSampahUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#date_input_edit').val(response.data.date_input);
+      $('#saldo_penjualan_edit').val(response.data.saldo_penjualan);
+      $('#description_edit').val(response.data.description);
+    },
+  });
+}
+
+$('#update-jualsampah').click(function() {
+  if ($("#form-jualsampah-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-jualsampah-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-jualsampah/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-jualsampah-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-jualsampah")[0].reportValidity();
+  }
+});
+
+function hapus_jualsampah(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-jualsampah",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-jualsampah').attr('onclick', `del_data_jualsampah(` + response.data + `)`);
+
+          $('#ModalHapusPenjualanSampah').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_jualsampah(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-jualsampah",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusPenjualanSampah').modal('hide');
+          // remove card data
+
+      },
+  });
+}
