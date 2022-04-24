@@ -160,6 +160,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/metode-penarikan-saldo/{id}', 'App\Http\Controllers\SaldoController@penarikan');
     Route::get('/penarikan-riwayat/',  'App\Http\Controllers\SaldoController@riwayat_penarikan')->name('penarikan-riwayat');
 
+    //profile
+    Route::get('/profile-nasabah/',  'App\Http\Controllers\ProfileController@index')->name('profile-nasabah');
+    Route::post('profile-nasabah', 'App\Http\Controllers\ProfileController@update');
 });
 
 
