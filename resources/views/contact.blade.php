@@ -610,15 +610,8 @@ SEMANDING
                                                             <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                             <ul></ul>
                                                         </div>
-                                                        <form action="/kontak/#wpcf7-f123-p62-o1" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
-                                                            <div style="display: none;">
-                                                                <input type="hidden" name="_wpcf7" value="123" />
-                                                                <input type="hidden" name="_wpcf7_version" value="5.5.6" />
-                                                                <input type="hidden" name="_wpcf7_locale" value="en_US" />
-                                                                <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f123-p62-o1" />
-                                                                <input type="hidden" name="_wpcf7_container_post" value="62" />
-                                                                <input type="hidden" name="_wpcf7_posted_data_hash" value="" />
-                                                            </div>
+                                                        <form action="{{ url('kontak') }}" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                            @csrf
                                                             <div class="contact-form">
                                                                 <div class="row">
                                                                     <div class="col-lg-12">

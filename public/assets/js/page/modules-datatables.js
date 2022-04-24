@@ -1136,3 +1136,49 @@ function del_data_jualsampah(id) {
       },
   });
 }
+
+function hapus_pesan(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-pesan",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-pesan').attr('onclick', `del_data_pesan(` + response.data + `)`);
+
+          $('#ModalHapusPesan').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_pesan(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-pesan",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusPesan').modal('hide');
+          // remove card data
+
+      },
+  });
+}
