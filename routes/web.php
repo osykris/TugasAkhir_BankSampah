@@ -134,6 +134,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/update-user-tps3r/',  'App\Http\Controllers\Admin\UserTPS3RController@update');
     Route::get('/hapus-user-tps3r/', 'App\Http\Controllers\Admin\UserTPS3RController@delete');
     Route::post('/destroy-user-tps3r/', 'App\Http\Controllers\Admin\UserTPS3RController@destroy');
+
+    //pembayaran bulanan tps3r
+    Route::get('pembayaran-tps3r', 'App\Http\Controllers\Admin\PembayaranTPS3RController@index')->name('pembayaran-tps3r');
+    Route::post('/add-pembayarantps3r/save', 'App\Http\Controllers\Admin\PembayaranTPS3RController@store');
+    Route::get('/edit-pembayaran-tps3r/',  'App\Http\Controllers\Admin\PembayaranTPS3RController@edit');
+    Route::post('/update-pembayaran-tps3r/',  'App\Http\Controllers\Admin\PembayaranTPS3RController@update');
+    Route::get('/hapus-pembayaran-tps3r/', 'App\Http\Controllers\Admin\PembayaranTPS3RController@delete');
+    Route::post('/destroy-pembayaran-tps3r/', 'App\Http\Controllers\Admin\PembayaranTPS3RController@destroy');
+    Route::get('/pembayaran-tps3r-detail/detail/{id}', 'App\Http\Controllers\Admin\PembayaranTPS3RController@riwayat')->name('pembayaran-tps3r-detail');
     
     //USER (NASABAH)
 

@@ -1182,3 +1182,128 @@ function del_data_pesan(id) {
       },
   });
 }
+
+$("#bayar-tps3r").dataTable();
+
+$("#bulanan-tps3r").dataTable();
+
+$('#add-pembayarantps3r').click(function() {
+  if ($("#form-bulanantps3r")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-bulanantps3r"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-pembayarantps3r/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-bulanantps3r')[0].reset();
+        $('#close-bulanantps3r').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-bulanantps3r")[0].reportValidity();
+  }
+});
+
+function edit_bulanantps3r(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-pembayaran-tps3r",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalBulananTPS3RUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#tps3r_user_id_edit').val(response.data.tps3r_user_id);
+      $('#month_edit').val(response.data.month);
+      $('#year_edit').val(response.data.year);
+    },
+  });
+}
+
+$('#update-bulanantps3r').click(function() {
+  if ($("#form-bulanantps3r-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-bulanantps3r-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-pembayaran-tps3r/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-bulanantps3r-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-bulanantps3r")[0].reportValidity();
+  }
+});
+
+function hapus_bulanantps3r(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-pembayaran-tps3r",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-bulanantps3r').attr('onclick', `del_data_bulanantps3r(` + response.data + `)`);
+
+          $('#ModalHapusBulananTPS3R').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_bulanantps3r(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-pembayaran-tps3r",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusBulananTPS3R').modal('hide');
+          // remove card data
+
+      },
+  });
+}
