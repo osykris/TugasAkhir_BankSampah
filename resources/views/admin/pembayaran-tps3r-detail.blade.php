@@ -6,6 +6,9 @@
 
 <section class="section">
     <div class="section-header">
+        <div class="section-header-back">
+            <a href="{{ route('pembayaran-tps3r') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+        </div>
         <h1>Detail Pembayaran TPS3R</h1>
         <div class="section-header-button">
             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -46,7 +49,6 @@
                                             <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_bulanantps3r('{{ $bulanan->id_payment }}')"><i class='fas fa-times'></i></button>
                                         </td>
                                     </tr>
-                                    {{ $user_id = $bulanan->id }}
                                     @endforeach
                                 </tbody>
                             </table>
@@ -70,24 +72,24 @@
             </div>
             <div class="modal-body">
                 <form id="form-bulanantps3r">
-                    <input type="hidden" class="form-control" value="{{ $user_id }}" placeholder="Masukkan ID User" name="tps3r_user_id" id="tps3r_user_id">
+                    <input type="hidden" name="id" id="id" value="{{ $id }}">
                     <div class="form-group">
-                      <label>Bulan</label>
-                      <select class="form-control selectric" name="month" id="month">
-                      <option value="Pilih Desa" disabled selected>Pilih Bulan</option>
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
-                      </select>
+                        <label>Bulan</label>
+                        <select class="form-control selectric" name="month" id="month">
+                            <option value="Pilih Desa" disabled selected>Pilih Bulan</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="year">Tahun</label>
@@ -97,7 +99,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-bulanantps3r">Tutup</button>
-                <button type="button" class="btn btn-primary" id="add-bulanantps3r">+ Tambah Pembayaran</button>
+                <button type="button" class="btn btn-primary" id="add-pembayarantps3r">+ Tambah Pembayaran</button>
             </div>
         </div>
     </div>
@@ -118,22 +120,22 @@
                     <input type="hidden" name="id_edit" id="id_edit">
                     <input type="hidden" class="form-control" value="{{ $user_id }}" placeholder="Masukkan ID User" name="tps3r_user_id_edit" id="tps3r_user_id_edit">
                     <div class="form-group">
-                      <label>Bulan</label>
-                      <select class="form-control selectric" name="month_edit" id="month_edit">
-                      <option value="Pilih Desa" disabled selected>Pilih Bulan</option>
-                        <option value="Januari">Januari</option>
-                        <option value="Februari">Februari</option>
-                        <option value="Maret">Maret</option>
-                        <option value="April">April</option>
-                        <option value="Mei">Mei</option>
-                        <option value="Juni">Juni</option>
-                        <option value="Juli">Juli</option>
-                        <option value="Agustus">Agustus</option>
-                        <option value="September">September</option>
-                        <option value="Oktober">Oktober</option>
-                        <option value="November">November</option>
-                        <option value="Desember">Desember</option>
-                      </select>
+                        <label>Bulan</label>
+                        <select class="form-control selectric" name="month_edit" id="month_edit">
+                            <option value="Pilih Desa" disabled selected>Pilih Bulan</option>
+                            <option value="Januari">Januari</option>
+                            <option value="Februari">Februari</option>
+                            <option value="Maret">Maret</option>
+                            <option value="April">April</option>
+                            <option value="Mei">Mei</option>
+                            <option value="Juni">Juni</option>
+                            <option value="Juli">Juli</option>
+                            <option value="Agustus">Agustus</option>
+                            <option value="September">September</option>
+                            <option value="Oktober">Oktober</option>
+                            <option value="November">November</option>
+                            <option value="Desember">Desember</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="year_edit">Tahun</label>

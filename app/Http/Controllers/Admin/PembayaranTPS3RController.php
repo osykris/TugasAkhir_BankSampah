@@ -27,12 +27,14 @@ class PembayaranTPS3RController extends Controller
 	public function riwayat($id)
     {
         if (Auth::user()->hasRole('admin')) {
+			if ($id != null) {
             $bulanans = DB::table('tps3r_pembayarans')
                 ->join('tps3r_users', 'tps3r_pembayarans.tps3r_user_id', '=', 'tps3r_users.id')
                 ->select('tps3r_pembayarans.*', 'tps3r_users.*')
                 ->where('tps3r_pembayarans.tps3r_user_id', $id)
                 ->get();
-            return view('admin.pembayaran-tps3r-detail', compact('bulanans'));
+            return view('admin.pembayaran-tps3r-detail', ['bulanans' => $bulanans, 'id'=>$id]);
+			}
         }
     }
 
@@ -42,7 +44,7 @@ class PembayaranTPS3RController extends Controller
 		try {
 
 			$store = PembayaranTPS3R::create([
-				'tps3r_user_id' => $request->input('tps3r_user_id'),
+				'tps3r_user_id' =>  $request->input('id'),
 				'month' => $request->input('month'),
 				'year' => $request->input('year'),
 			]);

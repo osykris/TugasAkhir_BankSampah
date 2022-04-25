@@ -1186,7 +1186,7 @@ function del_data_pesan(id) {
 $("#bayar-tps3r").dataTable();
 
 $("#bulanan-tps3r").dataTable();
-
+var p = "{{ $id }}";
 $('#add-pembayarantps3r').click(function() {
   if ($("#form-bulanantps3r")[0].checkValidity()) {
     var formdata = new FormData(document.getElementById("form-bulanantps3r"));
