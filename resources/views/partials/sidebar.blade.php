@@ -69,8 +69,8 @@
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-plus-square"></i> <span>Pengguna Jasa</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="#">Pembayaran Bulanan</a></li>
-          <li><a class="nav-link" href="{{ route('pengguna-tps3r') }}">Tambah Pengguna</a></li>
+          <li class="{{ Request::is('*pembayaran-tps3r*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pembayaran-tps3r') }}">Pembayaran Bulanan</a></li>
+          <li class="{{ Request::is('*pengguna-tps3r*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('pengguna-tps3r') }}">Tambah Pengguna</a></li>
         </ul>
       </li>
       @endif

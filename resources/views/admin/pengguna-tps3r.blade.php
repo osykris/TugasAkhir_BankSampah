@@ -103,7 +103,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-tps3r">Tutup</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-usertps3r">Tutup</button>
                 <button type="button" class="btn btn-primary" id="add-usertps3r">+ Tambah Pengguna</button>
             </div>
         </div>
