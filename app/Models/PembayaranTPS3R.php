@@ -14,5 +14,5 @@ class PembayaranTPS3R extends Model
     protected $fillable = [
         'tps3r_user_id', 'month', 'year'
     ];
-    public $timestamps = false;
+    public $timestamps = true;
 }

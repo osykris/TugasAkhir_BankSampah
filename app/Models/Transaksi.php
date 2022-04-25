@@ -14,7 +14,7 @@ class Transaksi extends Model
         'metode_penyetoran', 'kabupaten', 'kecamatan', 'desa', 'alamat_lengkap', 'no_hp', 'tanggal', 'waktu',
         'total_berat', 'status'
     ];
-    public $timestamps = false;
+    public $timestamps = true;
 
     public function user()
     {

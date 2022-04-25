@@ -12,7 +12,7 @@
         </div>
         <div class="dropdown-list-content dropdown-list-message">
           @php
-          $kontak = App\Models\Kontak::all();
+          $kontak = App\Models\Kontak::orderBy('id', 'desc')->get();
           @endphp
           @foreach($kontak as $kontaks)
           <div class="dropdown-item dropdown-item-unread">
