@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\SaldoTPS3R;
 use App\Models\SaldoTPS3RKeluar;
+use App\Models\SaldoTPS3R;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class SaldoTPS3RController extends Controller
+class SaldoTPS3RKeluarController extends Controller
 {
     public function __construct()
     {
@@ -19,9 +19,9 @@ class SaldoTPS3RController extends Controller
     public function index(Request $request)
     {
 		if (Auth::user()->hasRole('admin')) {
-        $tps3rs = SaldoTPS3R::all();
-		$sum_tps3r_keluar = SaldoTPS3RKeluar::sum('saldo_tps3r_keluar');
-        return view('admin.saldo-tps3r', compact('tps3rs', 'sum_tps3r_keluar'));
+        $tps3r_keluars = SaldoTPS3RKeluar::all();
+        $sum_tps3r_masuk = SaldoTPS3R::sum('saldo_tps3r');
+        return view('admin.saldo-tps3r-keluar', compact('tps3r_keluars', 'sum_tps3r_masuk'));
 		}
     }
 
@@ -30,10 +30,10 @@ class SaldoTPS3RController extends Controller
 		DB::beginTransaction();
 		try {
 
-			$store = SaldoTPS3R::create([
-				'tanggal_input' => $request->input('tanggal_input'),
-				'saldo_tps3r' => $request->input('saldo_tps3r'),
-				'keterangan' => $request->input('keterangan'),
+			$store = SaldoTPS3RKeluar::create([
+				'tgl_masuk' => $request->input('tgl_masuk'),
+				'saldo_tps3r_keluar' => $request->input('saldo_tps3r_keluar'),
+				'ket' => $request->input('ket'),
 			]);
 
 			DB::commit();
@@ -51,8 +51,8 @@ class SaldoTPS3RController extends Controller
 	public function edit(Request $request)
 	{
 		try {
-			$id_tps3r = $request->input('id');
-			$penerima = SaldoTPS3R::where('id', $id_tps3r)->first();
+			$id_tps3r_keluar = $request->input('id');
+			$penerima = SaldoTPS3RKeluar::where('id', $id_tps3r_keluar)->first();
 
 			return response()->json([
 				'data' => $penerima,
@@ -68,12 +68,12 @@ class SaldoTPS3RController extends Controller
 		try {
 			$id = $request->input('id_edit');
 			$data = [
-				'tanggal_input' =>  $request->input('tanggal_input_edit'),
-				'saldo_tps3r' =>  $request->input('saldo_tps3r_edit'),
-				'keterangan' =>  $request->input('keterangan_edit'),
+				'tgl_masuk' =>  $request->input('tgl_masuk_edit'),
+				'saldo_tps3r_keluar' =>  $request->input('saldo_tps3r_keluar_edit'),
+				'ket' =>  $request->input('ket_edit'),
 			];
 
-			SaldoTPS3R::where('id', $id)->update($data);
+			SaldoTPS3RKeluar::where('id', $id)->update($data);
 
 			return response()->json([
 				'data' => $data,
@@ -102,7 +102,7 @@ class SaldoTPS3RController extends Controller
 	{
 		try {
 			$id = $request->input('id');
-			SaldoTPS3R::where('id', $id)->delete();
+			SaldoTPS3RKeluar::where('id', $id)->delete();
 
 			return response()->json([
 				'data' => $id,

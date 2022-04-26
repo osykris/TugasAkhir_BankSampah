@@ -7,7 +7,7 @@
         <h1>Penjualan Sampah</h1>
         <div class="section-header-button">
             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Tambah Penjualan Sampah<i class="fas fa-plus"></i>
+                Tambah Penjualan Sampah <i class="fas fa-plus"></i>
             </button>
         </div>
         <div class="section-header-breadcrumb">
@@ -113,7 +113,7 @@
                         <input type="text" class="form-control" placeholder="Masukkan Saldo" name="saldo_penjualan_edit" id="saldo_penjualan_edit">
                     </div>
                     <div class="form-group">
-                        <label for="description">Keterangan</label>
+                        <label for="description_edit">Keterangan</label>
                         <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="description_edit" id="description_edit">
                     </div>
                 </form>

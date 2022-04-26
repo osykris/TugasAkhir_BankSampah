@@ -103,6 +103,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hapus-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@delete');
     Route::post('/destroy-saldo-tps3r/', 'App\Http\Controllers\Admin\SaldoTPS3RController@destroy');
 
+    //pengeluaran saldo tps3r
+    Route::get('/tps3r-keluar', 'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@index')->name('tps3r-keluar');
+    Route::post('/add-tps3r_keluar/save', 'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@store');
+    Route::get('/edit-saldo-tps3r_keluar/',  'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@edit');
+    Route::post('/update-saldo-tps3r_keluar/',  'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@update');
+    Route::get('/hapus-saldo-tps3r_keluar/', 'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@delete');
+    Route::post('/destroy-saldo-tps3r_keluar/', 'App\Http\Controllers\Admin\SaldoTPS3RKeluarController@destroy');
+
     //produk daur ulang
     Route::get('produk-daur-ulang', 'App\Http\Controllers\Admin\ProdukDaurUlangController@index')->name('produk-daur-ulang');
     Route::post('/add-produk-daur-ulang/save', 'App\Http\Controllers\Admin\ProdukDaurUlangController@store');
