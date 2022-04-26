@@ -35,6 +35,7 @@ $("#penarikan-nasabah").dataTable();
 $("#detail-nasabah-saldo").dataTable();
 
 $("#table-1").dataTable();
+
 $('#add-sampah').click(function() {
   if ($("#form-sampah")[0].checkValidity()) {
     var formdata = new FormData(document.getElementById("form-sampah"));
@@ -1430,3 +1431,5 @@ function del_data_tps3r_keluar(id) {
       },
   });
 }
+
+$("#laporan-transaksi").dataTable();
