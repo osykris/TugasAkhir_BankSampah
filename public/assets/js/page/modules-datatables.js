@@ -1307,3 +1307,126 @@ function del_data_bulanantps3r(id) {
       },
   });
 }
+
+$('#add-tps3r_keluar').click(function() {
+  if ($("#form-tps3r_keluar")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-tps3r_keluar"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-tps3r_keluar/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-tps3r_keluar')[0].reset();
+        $('#close-tps3r_keluar').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-tps3r_keluar")[0].reportValidity();
+  }
+});
+
+$("#tpsr_keluar").dataTable();
+
+function edit_tps3r_keluar(id) {
+  //console.log(id);
+  $.ajax({
+    type: "GET",
+    url: "/edit-saldo-tps3r_keluar",
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    data: {
+      id: id
+    },
+    success: function(response) {
+      console.log(response);
+      // show modal
+      $('#ModalPengeluaranTPS3RUpdate').modal('show');
+      // fill form in modal
+      $('#id_edit').val(response.data.id);
+      $('#tgl_masuk_edit').val(response.data.tgl_masuk);
+      $('#saldo_tps3r_keluar_edit').val(response.data.saldo_tps3r_keluar);
+      $('#ket_edit').val(response.data.ket);
+    },
+  });
+}
+
+$('#update-tps3r_keluar').click(function() {
+  if ($("#form-tps3r_keluar-update")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-tps3r_keluar-update"));
+    $.ajax({
+      type: "POST",
+      url: "/update-saldo-tps3r_keluar/",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-tps3r_keluar-edit').click();
+        window.location.reload();
+      }
+    });
+  } else {
+    $("#form-tps3r_keluar")[0].reportValidity();
+  }
+});
+
+function hapus_tps3r_keluar(id) {
+  console.log(id);
+  $.ajax({
+      type: "GET",
+      url: "/hapus-saldo-tps3r_keluar",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          // show modal
+          $('#btn-hapus-tps3r_keluar').attr('onclick', `del_data_tps3r_keluar(` + response.data + `)`);
+
+          $('#ModalHapusPengeluaranTPS3R').modal('show');
+
+          // fill data in modal
+
+      },
+  });
+}
+
+function del_data_tps3r_keluar(id) {
+  console.log(id);
+  $.ajax({
+      type: "POST",
+      url: "/destroy-saldo-tps3r_keluar",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: {
+          id: id
+      },
+      success: function(response) {
+          console.log(response);
+          window.location.reload();
+          // show modal
+          $('#ModalHapusPengeluaranTPS3R').modal('hide');
+          // remove card data
+
+      },
+  });
+}
