@@ -95,6 +95,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/post-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@store_cash');
     Route::get('/get-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@get_cash');
 
+    //laporan
+    Route::get('/laporan-transaksi', 'App\Http\Controllers\Admin\LaporanController@index')->name('laporan-transaksi');
+
     //saldo tps3r
     Route::get('/tps3r-masuk', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('tps3r-masuk');
     Route::post('/add-tps3r/save', 'App\Http\Controllers\Admin\SaldoTPS3RController@store');
