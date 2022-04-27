@@ -16,6 +16,28 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                        @if (session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if (session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+
+                        <div class="section-title mt-0">Fiter Data Dengan Bulan dan Tahun</div>
+                        <form class="row g-3" action="{{ route('report.transaksi') }}" method="get">
+                            <div class="col-3">
+                                <div class="mb-3">
+                                    <div class="form-group">
+                                        <input type="text" id="created_at" name="date" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button class="btn btn-primary px-4" type="submit"><i class="fas fa-filter me-2"></i> Filter</button>
+                                <button target="_blank" class="btn btn-success px-4 float-right" id="exportpdf"><i class="fas fa-file-pdf me-2"></i> Cetak PDF</button>
+                            </div>
+                        </form>
                         <div class="table-responsive">
                             <table class="table table-striped" id="laporan-transaksi">
                                 <thead>
@@ -52,12 +74,9 @@
                                     <tr>
                                         <th>
                                         <th>Total Berat</th>
-                                        @php $total_semua = 'App\Models\DetailTransaksi'::sum('berat');
-                                        $total_semua_harga = 'App\Models\DetailTransaksi'::sum('total_harga');
-                                        @endphp
-                                        <th>{{ $total_semua }} kg</th>
+                                        <th>{{ $jumlah_berat }} kg</th>
                                         <th>Total Harga</th>
-                                        <th>Rp. {{ number_format($total_semua_harga) }}</th>
+                                        <th>Rp. {{ number_format($jumlah_harga) }}</th>
                                     </tr>
                                 </tfoot>
                             </table>

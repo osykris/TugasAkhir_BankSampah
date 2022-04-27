@@ -42,7 +42,7 @@
       <li class="nav-item dropdown">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-book"></i> <span>Laporan</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="{{ route('laporan-transaksi') }}">Laporan Transaksi</a></li>
+          <li><a class="nav-link" href="{{ route('report.transaksi') }}">Laporan Transaksi</a></li>
           <li><a class="nav-link" href="forms-editor.html">Laporan Penjualan</a></li>
         </ul>
       </li>

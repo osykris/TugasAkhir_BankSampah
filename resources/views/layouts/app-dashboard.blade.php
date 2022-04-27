@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
-   <!-- CSS Libraries -->
-   <link rel="stylesheet" href="{!! asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') !!}">
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{!! asset('node_modules/datatables.net-bs4/css/dataTables.bootstrap4.min.css') !!}">
   <link rel="stylesheet" href="{!! asset('node_modules/datatables.net-select-bs4/css/select.bootstrap4.min.css') !!}">
 
   <!-- Template CSS -->
@@ -52,6 +52,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <script src="{!! asset('assets/js/stisla.js') !!}"></script>
 
   <!-- JS Libraies -->
@@ -60,7 +63,7 @@
   <script src="{!! asset('node_modules/datatables.net-select-bs4/js/select.bootstrap4.min.js') !!}"></script>
 
   <!-- Template JS File -->
-<script src="{!! asset('assets/js/scripts.js') !!}"></script>
+  <script src="{!! asset('assets/js/scripts.js') !!}"></script>
   <script src="{!! asset('assets/js/custom.js') !!}"></script>
 
   <!-- Page Specific JS File -->
