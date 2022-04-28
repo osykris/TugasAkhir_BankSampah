@@ -96,7 +96,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@get_cash');
 
     //laporan
-    Route::get('/laporan-transaksi', 'App\Http\Controllers\Admin\LaporanController@index')->name('laporan-transaksi-index');
     Route::get('/laporan-transaksi', 'App\Http\Controllers\Admin\LaporanController@transaksiReport')->name('report.transaksi');
     Route::get('/laporan-transaksi/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@transaksiReportPdf')->name('report.transaksi_pdf');
 
