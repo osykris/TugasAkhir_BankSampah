@@ -35,7 +35,7 @@
                             </div>
                             <div class="col">
                                 <button class="btn btn-primary px-4" type="submit"><i class="fas fa-filter me-2"></i> Filter</button>
-                                <button target="_blank" class="btn btn-success px-4 float-right" id="exportpdf"><i class="fas fa-file-pdf me-2"></i> Cetak PDF</button>
+                                <a target="_blank" class="btn btn-success px-4 float-right" id="exportpdf"><i class="fas fa-file-pdf me-2"></i> Cetak PDF</a>
                             </div>
                         </form>
                         <div class="table-responsive">

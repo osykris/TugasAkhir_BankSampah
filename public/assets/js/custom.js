@@ -12,7 +12,7 @@ $(document).ready(function() {
     let end = moment().endOf('month')
 
     //KEMUDIAN TOMBOL EXPORT PDF DI-SET URLNYA BERDASARKAN TGL TERSEBUT
-    $('#exportpdf').attr('href', '#' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
+    $('#exportpdf').attr('href', '/laporan-transaksi/pdf/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
 
     //INISIASI DATERANGEPICKER
     $('#created_at').daterangepicker({
@@ -20,6 +20,6 @@ $(document).ready(function() {
         endDate: end
     }, function(first, last) {
         //JIKA USER MENGUBAH VALUE, MANIPULASI LINK DARI EXPORT PDF
-        $('#exportpdf').attr('href', '#' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
+        $('#exportpdf').attr('href', '/laporan-transaksi/pdf/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
     })
 })
