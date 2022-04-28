@@ -163,5 +163,44 @@
         </a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <a href="{{ route('tps3r-masuk') }}">
+                <div class="card card-statistic-1">
+                    <div class="card-icon bg-success">
+                        <i class="fas fa-money-check-alt"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Saldo TPS3R</h4>
+                        </div>
+                        <div class="card-body">
+                            <?php 
+                                $saldo_tps3r = $tps3r_masuk - $tps3r_keluar;
+                            ?>
+                            Rp. {{ number_format($saldo_tps3r) }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+            <a href="{{ route('pengguna-tps3r') }}">
+                <div class="card card-statistic-1">
+                    <div class="card-icon bg-info">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-wrap">
+                        <div class="card-header">
+                            <h4>Pengguna Jasa TPS3R</h4>
+                        </div>
+                        <div class="card-body">
+                            {{ $tps3r_user }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
 </section>
 @endsection

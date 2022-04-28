@@ -10,6 +10,9 @@ use App\Models\PenjualanSampah;
 use App\Models\ProdukDaurUlang;
 use App\Models\Transaksi;
 use App\Models\User;
+use App\Models\SaldoTPS3R;
+use App\Models\SaldoTPS3RKeluar;
+use App\Models\UserTPS3R;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +57,9 @@ class HomeController extends Controller
             $sum_penarikan = PenarikanSaldo::sum('nominal');
             $penjualan_sampah = PenjualanSampah::count();
             $sum_penjualan = PenjualanSampah::sum('saldo_penjualan');
+            $tps3r_masuk = SaldoTPS3R::sum('saldo_tps3r');
+            $tps3r_keluar = SaldoTPS3RKeluar::sum('saldo_tps3r_keluar');
+            $tps3r_user = UserTPS3R::count();
             return view('admin.dashboard_admin', compact(
                 'user',
                 'artikel',
@@ -66,7 +72,10 @@ class HomeController extends Controller
                 'penarikan',
                 'sum_penarikan',
                 'penjualan_sampah',
-                'sum_penjualan'
+                'sum_penjualan',
+                'tps3r_masuk',
+                'tps3r_keluar',
+                'tps3r_user'
             ));
         }
     }
