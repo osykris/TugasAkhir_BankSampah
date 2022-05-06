@@ -26,8 +26,7 @@
             margin-top: 60px;
             font-family: "HelveticaNeue-CondensedBold", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
         }
-
-</style>
+    </style>
 </head>
 
 <body>
@@ -36,48 +35,46 @@
         </p>
     </center>
     <hr style="color: gray;">
-    <p style="color: #071C4D ;"> Laporan Sampah Masuk Periode ({{ $date[0] }} - {{ $date[1] }})</p>
+    <p style="color: #071C4D ;"> Laporan Transaksi Nasabah Periode ({{ $date[0] }} - {{ $date[1] }})</p>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
-                <tr style="color: gray;  font-size: 14px;">
+                <tr style="font-size: 14px;">
                     <th class="text-center">
                         No.
                     </th>
-                    <th>Nama Jenis Sampah</th>
-                    <th>Total Berat</th>
-                    <th>Harga</th>
-                    <th>Total Harga</th>
+                    <th>Nama</th>
+                    <th>Jenis Sampah</th>
+                    <th>Saldo</th>
                 </tr>
             </thead>
             <tbody>
                 @php $no = 1; @endphp
-                @foreach($sampah_masuk as $sampah_masuks)
-                <tr style=" font-size: 12px;">
-                    <td class="text-center">{{ $no++ }}</td>
-                    <td>{{ $sampah_masuks->jenis_sampah }}</td>
-                    @php $total_berat = 'App\Models\DetailTransaksi'::where('jenis_sampah', $sampah_masuks->jenis_sampah)->sum('berat');
-                    @endphp
-                    <td>{{ $total_berat }} kg</td>
-                    <td>Rp. {{ number_format($sampah_masuks->harga) }}</td>
+                @foreach($trans as $tr)
+                <tr>
+                    <td class="text-center" style="font-size: 12px;">{{ $no++ }}</td>
+                    <td style="font-size: 12px;">{{ $tr->name }}</td>
                     @php
-                    $total_harga = $total_berat * $sampah_masuks->harga;
+                    $detail = 'Illuminate\Support\Facades\DB'::table('detail_transaksis')
+                    ->join('saldos', 'detail_transaksis.transaksi_id', '=', 'saldos.transaksi_id')
+                    ->where('saldos.user_id', $tr->user_id)->get();
                     @endphp
-                    <td>
-                        Rp. {{ number_format($total_harga) }}
+                    <td style="font-size: 12px;">
+                        @foreach($detail as $dt)
+                        <ul>
+                            <li>
+                                <b>{{ $dt->jenis_sampah }} = </b>
+                                {{ $dt->berat }} kg x Rp. {{ number_format($dt->harga) }} = Rp. {{ number_format($dt->total_harga) }}
+                            </li>
+                        </ul>
+                        @endforeach
+                    </td>
+                    <td style="font-size: 12px;">
+                        Rp. {{ number_format($tr->saldo) }}
                     </td>
                 </tr>
                 @endforeach
             </tbody>
-            <tfoot>
-                <tr style="font-size: 12px;">
-                    <th>
-                    <th>Total Berat</th>
-                    <th>{{ $jumlah_berat }} kg</th>
-                    <th>Total Harga</th>
-                    <th>Rp. {{ number_format($jumlah_harga) }}</th>
-                </tr>
-            </tfoot>
         </table>
     </div>
     <br>

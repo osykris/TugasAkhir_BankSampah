@@ -19,7 +19,8 @@ class PenjualanSampahController extends Controller
     {
 		if (Auth::user()->hasRole('admin')) {
         $jualsampahs = PenjualanSampah::all();
-        return view('admin.penjualan-sampah', compact('jualsampahs'));
+		$total = PenjualanSampah::sum('saldo_penjualan');
+        return view('admin.penjualan-sampah', compact('jualsampahs', 'total'));
 		}
     }
 

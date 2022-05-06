@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class SetorSampahController extends Controller
 {
@@ -225,6 +226,36 @@ class SetorSampahController extends Controller
             $detail_transaksi = DetailTransaksi::where('transaksi_id', $id)->get();
             $saldos = Saldo::where('transaksi_id', $id)->get();
             return view('nasabah.setor-sampah.riwayat.detail-riwayat', compact('transaksis', 'detail_transaksi', 'saldos'));
+        }
+    }
+
+    public function cetak($id)
+    {
+        if (Auth::user()->hasRole('user')) {
+            $transaksis = DB::table('transaksis')
+                ->join('users', 'transaksis.user_id', '=', 'users.id')
+                ->where('transaksis.id', $id)
+                ->where('user_id', Auth::user()->id)
+                ->select(
+                    'transaksis.id',
+                    'transaksis.metode_penyetoran',
+                    'transaksis.waktu',
+                    'transaksis.tanggal',
+                    'transaksis.total_berat',
+                    'transaksis.kabupaten',
+                    'transaksis.kecamatan',
+                    'transaksis.desa',
+                    'transaksis.alamat_lengkap',
+                    'transaksis.no_hp',
+                    'transaksis.status',
+                    'users.name'
+                )
+                ->get();
+            $detail_transaksi = DetailTransaksi::where('transaksi_id', $id)->get();
+            $saldos = Saldo::where('transaksi_id', $id)->get();
+            $pdf = Pdf::loadView('nasabah.setor-sampah.riwayat.cetak', compact('transaksis', 'detail_transaksi', 'saldos'));
+            //GENERATE PDF-NYA
+            return $pdf->stream();
         }
     }
 }

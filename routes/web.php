@@ -96,8 +96,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/get-penarikanCash/',  'App\Http\Controllers\Admin\SaldoController@get_cash');
 
     //laporan
-    Route::get('/laporan-transaksi', 'App\Http\Controllers\Admin\LaporanController@transaksiReport')->name('report.transaksi');
+    Route::get('/laporan-transaksi', 'App\Http\Controllers\Admin\LaporanController@transaksiReport')->name('laporan-transaksi');
     Route::get('/laporan-transaksi/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@transaksiReportPdf')->name('report.transaksi_pdf');
+    Route::get('/laporan-transaksi-nasabah/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@transaksiReportPdf_trans')->name('report.transaksi_pdf_trans');
+    Route::get('/laporan-penjualan', 'App\Http\Controllers\Admin\LaporanController@penjualan')->name('laporan-penjualan');
+    Route::get('/laporan-penjualan/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@reportPenjualan')->name('report.penjualan_pdf');
 
     //saldo tps3r
     Route::get('/tps3r-masuk', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('tps3r-masuk');
@@ -174,6 +177,7 @@ Route::group(['middleware' => ['auth']], function () {
     //riwayat transaksi
     Route::get('/riwayat-transaksi', 'App\Http\Controllers\SetorSampahController@riwayat')->name('riwayat-transaksi');
     Route::get('/riwayat-transaksi/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail_transaksi');
+    Route::get('/riwayat-cetak/{id}', 'App\Http\Controllers\SetorSampahController@cetak')->name('riwayat-cetak');
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
@@ -187,6 +191,10 @@ Route::group(['middleware' => ['auth']], function () {
     //profile
     Route::get('/profile-nasabah/',  'App\Http\Controllers\ProfileController@index')->name('profile-nasabah');
     Route::post('profile-nasabah', 'App\Http\Controllers\ProfileController@update');
+
+    //laporan transaksi
+    Route::get('/laporan-nasabah', 'App\Http\Controllers\LaporanController@transaksiReport')->name('laporan-nasabah');
+    Route::get('/laporan-nasabah/pdf/{daterange}', 'App\Http\Controllers\LaporanController@transaksiReportPdf')->name('report.nasabah_pdf');
 });
 
 

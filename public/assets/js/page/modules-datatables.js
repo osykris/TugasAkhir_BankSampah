@@ -1433,3 +1433,5 @@ function del_data_tps3r_keluar(id) {
 }
 
 $("#laporan-transaksi").dataTable();
+
+$("#trans").dataTable();

@@ -4,10 +4,10 @@
 
 <section class="section">
     <div class="section-header">
-        <h1>Penjualan Sampah</h1>
+        <h1>Data Penjualan Sampah Kepada Pengepul</h1>
         <div class="section-header-button">
             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                Tambah Penjualan Sampah <i class="fas fa-plus"></i>
+                Tambah <i class="fas fa-plus"></i>
             </button>
         </div>
         <div class="section-header-breadcrumb">
@@ -28,7 +28,7 @@
                                             No.
                                         </th>
                                         <th>Tanggal Penjualan</th>
-                                        <th>Saldo</th>
+                                        <th>Saldo Masuk</th>
                                         <th>Keterangan</th>
                                         <th class="text-center">Action</th>
                                     </tr>
@@ -48,6 +48,11 @@
                                     </tr>
                                     @endforeach
                                 </tbody>
+                                <tfoot>
+                                    <td></td>
+                                    <td><b>Total Saldo</b></td>
+                                    <td><b>Rp. {{ number_format($total) }}</b></td>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

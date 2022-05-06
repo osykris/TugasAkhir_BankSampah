@@ -29,21 +29,21 @@
         </ul>
       </li>
       <li class="nav-item dropdown {{ Request::is('*saldo*') ? 'active' : Request::is('*penarikan-nasabah*') ? 'active' : '' }}">
-        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
+        <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo Nasabah</span></a>
         <ul class="dropdown-menu">
           <li class="{{ Request::is('*saldo*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('saldo') }}">Saldo</a></li>
           <li class="{{ Request::is('*penarikan-nasabah*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('penarikan-nasabah') }}">Riwayat Penarikan</a></li>
         </ul>
       </li>
       <li class="nav-item {{ Request::is('*penjualan-sampah*') ? 'active' : '' }}">
-        <a href="{{ route('penjualan-sampah') }}" class="nav-link"><i class="fas fa-chart-line"></i> <span>Penjualan</span></a>
+        <a href="{{ route('penjualan-sampah') }}" class="nav-link"><i class="fas fa-chart-line"></i> <span>Penjualan ke Pengepul</span></a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown {{ Request::is('*laporan-transaksi*') ? 'active' : Request::is('*laporan-penjualan*') ? 'active' : '' }}">
         <a href="#" class="nav-link has-dropdown"><i class="fa fa-book"></i> <span>Laporan</span></a>
         <ul class="dropdown-menu">
-          <li><a class="nav-link" href="{{ route('report.transaksi') }}">Laporan Transaksi</a></li>
-          <li><a class="nav-link" href="forms-editor.html">Laporan Penjualan</a></li>
+          <li class="{{ Request::is('*laporan-transaksi*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('laporan-transaksi') }}">Laporan Transaksi</a></li>
+          <li class="{{ Request::is('*laporan-penjualan*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('laporan-penjualan') }}">Laporan Penjualan</a></li>
         </ul>
       </li>
 
@@ -97,8 +97,8 @@
           <li class="{{ Request::is('*penarikan-riwayat*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('penarikan-riwayat') }}">Riwayat Penarikan</a></li>
         </ul>
       </li>
-      <li class="nav-item ">
-        <a href="{{ route('setor-sampah') }}" class="nav-link "><i class="fa fa-book"></i> <span> Laporan</span></a>
+      <li class="nav-item {{ Request::is('*laporan-nasabah*') ? 'active' : '' }}">
+        <a href="{{ route('laporan-nasabah') }}" class="nav-link "><i class="fa fa-book"></i> <span> Laporan</span></a>
       </li>
       @endif
     </ul>
