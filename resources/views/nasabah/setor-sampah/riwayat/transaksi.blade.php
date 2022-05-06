@@ -54,8 +54,8 @@
                                         <td class="text-center">
                                             <div class="buttons">
                                                 <a href="{{ url('riwayat-transaksi/detail') }}/{{ $transaksi->id }}" class="btn btn-icon icon-left btn-primary"><i class="fas fa-info-circle"></i> Detail</a>
-                                                @if($transaksi->status == 'Diterima')
-                                                <a href="{{ url('tambah-sampah') }}/{{ $transaksi->id }}/{{ $transaksi->user_id }}" class="btn btn-icon icon-left btn-info"><i class="fas fa-plus"></i> Sampah</a>
+                                                @if($transaksi->status == 'Selesai')
+                                                <a href="{{ url('riwayat-cetak') }}/{{ $transaksi->id }}" target="_blank" class="btn btn-icon icon-left btn-warning"><i class="fas fa-cloud-download-alt"></i> Download PDF</a>
                                                 @endif
                                             </div>
                                         </td>

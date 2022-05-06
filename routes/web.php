@@ -177,6 +177,7 @@ Route::group(['middleware' => ['auth']], function () {
     //riwayat transaksi
     Route::get('/riwayat-transaksi', 'App\Http\Controllers\SetorSampahController@riwayat')->name('riwayat-transaksi');
     Route::get('/riwayat-transaksi/detail/{id}', 'App\Http\Controllers\SetorSampahController@detail_transaksi');
+    Route::get('/riwayat-cetak/{id}', 'App\Http\Controllers\SetorSampahController@cetak')->name('riwayat-cetak');
 
     //data sampah
     Route::get('data-sampah', 'App\Http\Controllers\DataSampahController@index')->name('data-sampah');
