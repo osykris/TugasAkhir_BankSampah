@@ -58,3 +58,20 @@ $(document).ready(function() {
     })
 })
 
+$(document).ready(function() {
+    let start = moment().startOf('month')
+    let end = moment().endOf('month')
+
+    //KEMUDIAN TOMBOL EXPORT PDF DI-SET URLNYA BERDASARKAN TGL TERSEBUT
+    $('#exportpdf_nas').attr('href', '/laporan-nasabah/pdf/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
+
+    //INISIASI DATERANGEPICKER
+    $('#nas_date').daterangepicker({
+        startDate: start,
+        endDate: end
+    }, function(first, last) {
+        //JIKA USER MENGUBAH VALUE, MANIPULASI LINK DARI EXPORT PDF
+        $('#exportpdf_nas').attr('href', '/laporan-nasabah/pdf/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
+    })
+})
+

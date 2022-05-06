@@ -191,6 +191,10 @@ Route::group(['middleware' => ['auth']], function () {
     //profile
     Route::get('/profile-nasabah/',  'App\Http\Controllers\ProfileController@index')->name('profile-nasabah');
     Route::post('profile-nasabah', 'App\Http\Controllers\ProfileController@update');
+
+    //laporan transaksi
+    Route::get('/laporan-nasabah', 'App\Http\Controllers\LaporanController@transaksiReport')->name('laporan-nasabah');
+    Route::get('/laporan-nasabah/pdf/{daterange}', 'App\Http\Controllers\LaporanController@transaksiReportPdf')->name('report.nasabah_pdf');
 });
 
 

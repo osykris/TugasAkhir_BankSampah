@@ -97,8 +97,8 @@
           <li class="{{ Request::is('*penarikan-riwayat*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('penarikan-riwayat') }}">Riwayat Penarikan</a></li>
         </ul>
       </li>
-      <li class="nav-item ">
-        <a href="{{ route('setor-sampah') }}" class="nav-link "><i class="fa fa-book"></i> <span> Laporan</span></a>
+      <li class="nav-item {{ Request::is('*laporan-nasabah*') ? 'active' : '' }}">
+        <a href="{{ route('laporan-nasabah') }}" class="nav-link "><i class="fa fa-book"></i> <span> Laporan</span></a>
       </li>
       @endif
     </ul>
