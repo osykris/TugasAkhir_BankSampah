@@ -23,3 +23,38 @@ $(document).ready(function() {
         $('#exportpdf').attr('href', '/laporan-transaksi/pdf/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
     })
 })
+
+$(document).ready(function() {
+    let start = moment().startOf('month')
+    let end = moment().endOf('month')
+
+    //KEMUDIAN TOMBOL EXPORT PDF DI-SET URLNYA BERDASARKAN TGL TERSEBUT
+    $('#exportpdf_trans').attr('href', '/laporan-transaksi-nasabah/pdf/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
+
+    //INISIASI DATERANGEPICKER
+    $('#created_at_trans').daterangepicker({
+        startDate: start,
+        endDate: end
+    }, function(first, last) {
+        //JIKA USER MENGUBAH VALUE, MANIPULASI LINK DARI EXPORT PDF
+        $('#exportpdf_trans').attr('href', '/laporan-transaksi-nasabah/pdf/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
+    })
+})
+
+$(document).ready(function() {
+    let start = moment().startOf('month')
+    let end = moment().endOf('month')
+
+    //KEMUDIAN TOMBOL EXPORT PDF DI-SET URLNYA BERDASARKAN TGL TERSEBUT
+    $('#exportpdf_penj').attr('href', '/laporan-penjualan/pdf/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
+
+    //INISIASI DATERANGEPICKER
+    $('#penjualan').daterangepicker({
+        startDate: start,
+        endDate: end
+    }, function(first, last) {
+        //JIKA USER MENGUBAH VALUE, MANIPULASI LINK DARI EXPORT PDF
+        $('#exportpdf_penj').attr('href', '/laporan-penjualan/pdf/' + first.format('YYYY-MM-DD') + '+' + last.format('YYYY-MM-DD'))
+    })
+})
+
