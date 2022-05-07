@@ -82,6 +82,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/user', 'App\Http\Controllers\Admin\NasabahController@index')->name('user');
     Route::get('/hapus-user/', 'App\Http\Controllers\Admin\NasabahController@delete');
     Route::post('/destroy-user/', 'App\Http\Controllers\Admin\NasabahController@destroy');
+    Route::get('/cetak-nasabah/pdf', 'App\Http\Controllers\Admin\NasabahController@cetak')->name('report.data_nasabah');
 
     //saldo
     Route::get('/saldo', 'App\Http\Controllers\Admin\SaldoController@index')->name('saldo');
