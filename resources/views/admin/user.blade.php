@@ -5,6 +5,11 @@
 <section class="section">
     <div class="section-header">
         <h1>Data User</h1>
+        <div class="section-header-button">
+            <a class="btn btn-warning" href="{{ route('report.data_nasabah') }}" target="_blank">
+            <i class="fas fa-cloud-download-alt"></i>   Download PDF
+</a>
+        </div>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="{{ route('dashboard') }}">Dashboard</a></div>
             <div class="breadcrumb-item"><a href="{{ route('user') }}">Data User</a></div>
