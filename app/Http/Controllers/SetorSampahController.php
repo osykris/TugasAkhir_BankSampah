@@ -65,7 +65,7 @@ class SetorSampahController extends Controller
         $sampah = DataSampah::where('id', $id)->first();
 
         //cek validasi
-        $check_setor = Transaksi::where('user_id', Auth::user()->id)->where('status', 'Dalam Proses')->first();
+        $check_setor = Transaksi::where('user_id', Auth::user()->id)->where('status', 'Diajukan')->first();
 
         //menyimpang ke database transaksi
         if (empty($check_setor)) {
@@ -76,7 +76,7 @@ class SetorSampahController extends Controller
         }
 
         //simpan ke database detail transaksi
-        $new_setor = Transaksi::where('user_id', Auth::user()->id)->where('status', 'Dalam Proses')->first();
+        $new_setor = Transaksi::where('user_id', Auth::user()->id)->where('status', 'Diajukan')->first();
 
         //cek detail transaksi
         $check_transaksi_detail = DetailTransaksi::where('sampah_id', $sampah->id)->where('transaksi_id', $new_setor->id)->first();
