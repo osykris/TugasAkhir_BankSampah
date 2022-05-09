@@ -54,7 +54,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="total_berat">Perkiraan Total Berat (Kg)</label>
-                        <input type="number" class="form-control" name="total_berat" id="total_berat" placeholder="Masukkan Perkiraan">
+                        <input type="text" class="form-control" name="total_berat" id="total_berat" placeholder="Masukkan Perkiraan">
                     </div>
                 </div>
             </div>

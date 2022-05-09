@@ -102,7 +102,7 @@
                             <td class="text-center">
                                 <form method="POST" action="{{ url('tambah-sampah/save') }}/{{ $sampah->id }}/{{ $iduser }}">
                                     @csrf
-                                    <input type="number" class="form-control" name="total_berat" required="" id="total_berat" placeholder="Masukkan Berat (kg)">
+                                    <input type="text" class="form-control" name="total_berat" required="" id="total_berat" placeholder="Masukkan Berat (kg)">
                                     <button type="submit" style="float: left;" class="btn btn-primary">Tambah</button>
                                 </form>
                             </td>
