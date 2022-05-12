@@ -5,7 +5,7 @@
 <section class="section">
     <div class="section-header">
          <div class="section-header-back">
-            <a href="{{ route('riwayat-transaksiNasabah') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
+            <a href="{{ route('transaksi-masuk') }}" class="btn btn-icon"><i class="fas fa-arrow-left"></i></a>
         </div>
         <h1>Tambah Jenis Sampah</h1>
         <div class="section-header-button">

@@ -30,6 +30,8 @@ class ProfileController extends Controller
     	$user->nohp = $request->nohp;
         $user->desa = $request->desa;
     	$user->alamat_lengkap = $request->alamat_lengkap;
+        $user->bank = $request->bank;
+        $user->norek = $request->norek;
     	if(!empty($request->password))
     	{
     		$user->password = Hash::make($request->password);

@@ -111,9 +111,19 @@
                             <input type="date" class="form-control" placeholder="Masukkan Tanggal Transfer" name="tanggal" id="tanggal">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="bank">Bank</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Bank Pengirim" name="bank" id="bank">
+                    <div class="row">
+                    <div class="form-group col-4">
+                            <label for="bank">Bank Pengirim</label>
+                            <input type="text" class="form-control" placeholder="Masukkan Bank Pengirim" name="bank_pengirim" id="bank_pengirim">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="bank">Bank Tujuan</label>
+                            <input type="text" class="form-control" readonly placeholder="Masukkan Bank Tujuan" name="bank_edit" id="bank_edit">
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="bank">Nomor Rekening Tujuan</label>
+                            <input type="text" class="form-control" readonly placeholder="Masukkan Nomor Rekening" name="norek_edit" id="norek_edit">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="bukti_pembayaran">Bukti Transfer</label>
@@ -156,7 +166,6 @@
                         <input readonly type="text" class="form-control" name="metode_tarik_saldo_editt" id="metode_tarik_saldo_editt">
                     </div>
                     <div class="row">
-
                         <div class="form-group col-6">
                             <label for="nominal">Nominal</label>
                             <div class="input-group mb-3">

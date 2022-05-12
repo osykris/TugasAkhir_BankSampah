@@ -10,7 +10,7 @@ class PenarikanSaldo extends Model
     protected $table = 'penarikan_saldos';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user_id', 'nama_pengirim', 'nominal', 'bank', 'tanggal', 'bukti_pembayaran', 'metode_penarikan'
+        'user_id', 'nama_pengirim', 'nominal', 'bank', 'bank_pengirim', 'norek', 'tanggal', 'bukti_pembayaran', 'metode_penarikan'
     ];
     public $timestamps = false;
 

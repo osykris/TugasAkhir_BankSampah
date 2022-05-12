@@ -792,6 +792,8 @@ function tarik(id) {
       $('#id_edit').val(response.data.id);
       $('#metode_tarik_saldo_edit').val(response.data.metode_tarik_saldo);
       $('#saldo_user_edit').val(response.data.saldo_user);
+      $('#bank_edit').val(response.data.bank);
+      $('#norek_edit').val(response.data.norek);
     },
   });
 }

@@ -28,7 +28,9 @@
                                         </th>
                                         <th>Nama</th>
                                         <th>Nama Pengirim</th>
-                                        <th>Bank</th>
+                                        <th>Bank Pengirim</th>
+                                        <th>Bank Tujuan</th>
+                                        <th>No. Rekening Tujuan</th>
                                         <th>Tanggal</th>
                                         <th>Nominal</th>
                                         <th>Metode Penarikan</th>
@@ -42,15 +44,19 @@
                                         <td class="text-center">{{ $no++ }}</td>
                                         <td>{{ $penarikans->name }}</td>
                                         <td>{{ $penarikans->nama_pengirim }}</td>
+                                        <td>{{ $penarikans->bank_pengirim }}</td>
                                         <td>{{ $penarikans->bank }}</td>
+                                        <td>{{ $penarikans->norek }}</td>
                                         <td>{{ $penarikans->tanggal }}</td>
                                         <td>
                                             <div class="badge badge-success">Rp. {{ number_format($penarikans->nominal) }}</div>
                                         </td>
                                         <td>{{ $penarikans->metode_penarikan }}</td>
                                         <td class="text-center">
+                                        @if($penarikans->metode_penarikan == "Transfer Bank")
                                             <button onclick="gambar('{{ $penarikans->id }}')" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i> Bukti Transfer</button>
-                                        </td>
+                                            @endif
+                                        </td>   
                                     </tr>
                                     @endforeach
                                 </tbody>
