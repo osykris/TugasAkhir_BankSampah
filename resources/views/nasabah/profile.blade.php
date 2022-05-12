@@ -24,13 +24,16 @@
                         </div>
                         Alamat : {{ Auth::user()->alamat_lengkap }}, {{ Auth::user()->desa }}, {{ Auth::user()->kecamatan }}, {{ Auth::user()->kabupaten }}<br />
                         No. Telp : {{ Auth::user()->nohp }}<br />
-                        Email : {{ Auth::user()->email }}
+                        Email : {{ Auth::user()->email }} 
+                        <hr>
+                        Bank : {{ Auth::user()->bank }}  <br/>
+                        No. Rekening : {{ Auth::user()->norek }} 
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-12 col-lg-7">
                 <div class="card">
-                    <form  class="needs-validation" method="POST" action="{{ url('profile-nasabah') }}">
+                    <form class="needs-validation" method="POST" action="{{ url('profile-nasabah') }}">
                         @csrf
                         <div class="card-header">
                             <h4>Edit Profile</h4>
@@ -99,6 +102,16 @@
                                 </div>
                             </div>
                             <br>
+                            <div class="row">
+                                <div class="form-group col-6">
+                                    <label>Bank</label>
+                                    <input type="text" name="bank" class="form-control" value="{{ Auth::user()->bank }}" required>
+                                </div>
+                                <div class="form-group col-6">
+                                    <label>Nomor Rekening</label>
+                                    <input type="text" name="norek" class="form-control" value="{{ Auth::user()->norek }}" required>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-7 col-12">
                                     <label for="password">{{ __('Password') }}</label>

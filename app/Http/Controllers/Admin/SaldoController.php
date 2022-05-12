@@ -81,10 +81,12 @@ class SaldoController extends Controller
             $store = PenarikanSaldo::create([
                 'user_id' => $id,
                 'nama_pengirim' => $request->input('nama_pengirim'),
-                'bank' => $request->input('bank'),
                 'tanggal' => $request->input('tanggal'),
                 'nominal' => $request->input('saldo_user_edit'),
                 'metode_penarikan' => $request->input('metode_tarik_saldo_edit'),
+                'bank' => $request->input('bank_edit'),
+                'bank_pengirim' => $request->input('bank_pengirim'),
+                'norek' => $request->input('norek_edit'),
                 'bukti_pembayaran' =>  $nama_file,
             ]);
 
@@ -117,7 +119,7 @@ class SaldoController extends Controller
         if (Auth::user()->hasRole('admin')) {
             $penarikan = DB::table('penarikan_saldos')
                 ->join('users', 'penarikan_saldos.user_id', '=', 'users.id')
-                ->select('users.name', 'penarikan_saldos.metode_penarikan', 'penarikan_saldos.tanggal', 'penarikan_saldos.nominal', 'penarikan_saldos.bukti_pembayaran', 'penarikan_saldos.bank', 'penarikan_saldos.nama_pengirim', 'penarikan_saldos.id')
+                ->select('users.name', 'penarikan_saldos.bank_pengirim', 'penarikan_saldos.metode_penarikan', 'penarikan_saldos.tanggal', 'penarikan_saldos.nominal', 'penarikan_saldos.bukti_pembayaran', 'penarikan_saldos.bank', 'penarikan_saldos.nama_pengirim', 'penarikan_saldos.id', 'penarikan_saldos.norek')
                 ->where('penarikan_saldos.user_id', $id)
                 ->get();
             return view('admin.saldo.riwayat-penarikan', compact('penarikan'));

@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <h4>Saldo Anda</h4>
                         @foreach($saldo as $saldos)
-                        @if($saldos->saldo_user == null && $saldos->saldo_user == 0)
+                        @if($saldos->saldo_user != null && $saldos->saldo_user != 0)
                         <div class="section-header-button">
                             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
                                 Ajukan Metode Penarikan Saldo
