@@ -59,11 +59,12 @@
       </li>
 
       <li class="menu-header">TPS3R</li>
-      <li class="nav-item dropdown {{  Request::is('*tps3r-masuk*') ? 'active' :  Request::is('*tps3r-keluar*') ? 'active' : '' }}">
+      <li class="nav-item dropdown {{  Request::is('*tps3r-masuk*') ? 'active' :  Request::is('*tps3r-keluar*') ? 'active' :  Request::is('*laporan-tps3r*') ? 'active' : '' }}">
         <a href="#" class="nav-link has-dropdown"><i class="fas fa-money-check-alt"></i> <span>Saldo</span></a>
         <ul class="dropdown-menu">
           <li class="{{ Request::is('*tps3r-masuk*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('tps3r-masuk') }}">Saldo Masuk</a></li>
           <li class="{{ Request::is('*tps3r-keluar*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('tps3r-keluar') }}">Saldo Keluar</a></li>
+          <li class="{{ Request::is('*laporan-tps3r*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('laporan-tps3r') }}">Laporan TPS3R</a></li>
         </ul>
       </li>
       <li class="nav-item dropdown {{ Request::is('*pengguna-tps3r*') ? 'active' : Request::is('*pembayaran-tps3r*') ? 'active' : '' }}">

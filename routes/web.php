@@ -102,6 +102,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/laporan-transaksi-nasabah/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@transaksiReportPdf_trans')->name('report.transaksi_pdf_trans');
     Route::get('/laporan-penjualan', 'App\Http\Controllers\Admin\LaporanController@penjualan')->name('laporan-penjualan');
     Route::get('/laporan-penjualan/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@reportPenjualan')->name('report.penjualan_pdf');
+    Route::get('/laporan-tps3r', 'App\Http\Controllers\Admin\LaporanController@tps3rReport')->name('laporan-tps3r');
+    Route::get('/laporan-tps3r/pdf/{daterange}', 'App\Http\Controllers\Admin\LaporanController@tps3rReportPdf')->name('report.tps3r_pdf');
 
     //saldo tps3r
     Route::get('/tps3r-masuk', 'App\Http\Controllers\Admin\SaldoTPS3RController@index')->name('tps3r-masuk');
@@ -159,6 +161,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/hapus-pembayaran-tps3r/', 'App\Http\Controllers\Admin\PembayaranTPS3RController@delete');
     Route::post('/destroy-pembayaran-tps3r/', 'App\Http\Controllers\Admin\PembayaranTPS3RController@destroy');
     Route::get('/pembayaran-tps3r-detail/detail/{id}', 'App\Http\Controllers\Admin\PembayaranTPS3RController@riwayat')->name('pembayaran-tps3r-detail');
+    Route::post('/add-payment-tps3r/save', 'App\Http\Controllers\Admin\PembayaranTPS3RController@storeOneInput');
     
     //USER (NASABAH)
 

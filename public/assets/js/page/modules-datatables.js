@@ -1437,3 +1437,31 @@ function del_data_tps3r_keluar(id) {
 $("#laporan-transaksi").dataTable();
 
 $("#trans").dataTable();
+
+$("#laporan-tps3r").dataTable();
+
+$('#add-payment-tps3r').click(function() {
+  if ($("#form-paytps3r")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-paytps3r"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-payment-tps3r/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#close-paytps3r').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-paytps3r")[0].reportValidity();
+  }
+});
