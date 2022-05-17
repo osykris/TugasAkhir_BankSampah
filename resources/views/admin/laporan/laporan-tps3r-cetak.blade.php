@@ -37,6 +37,12 @@
     <hr style="color: gray;">
     <p style="color: #071C4D ;"> Laporan Saldo TPS3R Periode ({{ $date[0] }} - {{ $date[1] }})</p>
     <div class="table-responsive">
+        @php
+        $saldo_sebelum = $saldo_masuk_sebelum - $saldo_keluar_sebelum;
+        @endphp
+        <h6>
+            Saldo Sebelumnya Rp. {{ number_format($saldo_sebelum) }}
+        </h6>
         <table class="table table-striped">
             <thead>
                 <tr style="color: gray;  font-size: 14px;">
@@ -47,41 +53,28 @@
                 </tr>
             </thead>
             <tbody>
-                @php
-                $saldo_sebelum = $saldo_masuk_sebelum - $saldo_keluar_sebelum;
-                @endphp
-                <tr>
-                    <th colspan="2">Saldo Sebelumnya</th>
-                    <td style="text-align:right">Rp. {{ number_format($saldo_sebelum) }}</td>
-                    <td style="text-align:right"></td>
-                </tr>
                 @php $no = 1; @endphp
                 @foreach($ket_masuk as $ket_masuks)
                 </tr>
                 <td class="text-center">{{ $no++ }}</td>
                 <td>{{ $ket_masuks->keterangan }}</td>
                 <td style="text-align:right">Rp. {{ number_format($ket_masuks->saldo_tps3r) }}</td>
-                <td style="text-align:right"></td>
+                <td style="text-align:right">Rp. 0</td>
                 </tr>
                 @endforeach
                 @foreach($ket_keluar as $ket_keluars)
                 </tr>
                 <td class="text-center">{{ $no++ }}</td>
                 <td>{{ $ket_keluars->ket }}</td>
-                <td style="text-align:right"></td>
+                <td style="text-align:right">Rp. 0</td>
                 <td style="text-align:right">Rp. {{ number_format($ket_keluars->saldo_tps3r_keluar) }}</td>
                 </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
-                    <th colspan="2">Total Saldo Masuk</th>
+                    <th colspan="2">Total</th>
                     <td style="text-align:right">Rp. {{ number_format($saldo_masuk) }}</td>
-                    <td style="text-align:right"></td>
-                </tr>
-                <tr>
-                    <th colspan="2">Total Saldo Keluar</th>
-                    <td style="text-align:right"></td>
                     <td style="text-align:right">Rp. {{ number_format($saldo_keluar) }}</td>
                 </tr>
                 @php

@@ -182,7 +182,7 @@ class LaporanController extends Controller
         $saldo_masuk = SaldoTPS3R::whereBetween('created_at', [$start, $end])->sum('saldo_tps3r');
         $saldo_keluar = SaldoTPS3RKeluar::whereBetween('created_at', [$start, $end])->sum('saldo_tps3r_keluar');
         //LOAD VIEW UNTUK PDFNYA DENGAN MENGIRIMKAN DATA DARI HASIL QUERY
-        $pdf = Pdf::loadView('admin.laporan.laporan-tps3r-cetak', compact('saldo_masuk_sebelum', 'saldo_keluar_sebelum', 'ket_masuk', 'ket_keluar', 'saldo_masuk', 'saldo_keluar'));
+        $pdf = Pdf::loadView('admin.laporan.laporan-tps3r-cetak', compact('date','saldo_masuk_sebelum', 'saldo_keluar_sebelum', 'ket_masuk', 'ket_keluar', 'saldo_masuk', 'saldo_keluar'));
         //GENERATE PDF-NYA
         return $pdf->stream();
     }
