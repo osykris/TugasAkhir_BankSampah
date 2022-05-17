@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\UserTPS3R;
 use App\Models\PembayaranTPS3R;
+use App\Models\SaldoTPS3R;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -122,6 +123,34 @@ class PembayaranTPS3RController extends Controller
 				'message' => 'Berhasil Dihapus',
 			], 200);
 		} catch (\Throwable $th) {
+			return $th;
+		}
+	}
+
+	public function storeOneInput(Request $request)
+	{
+		DB::beginTransaction();
+		try {
+			$store = PembayaranTPS3R::create([
+				'tps3r_user_id' =>  $request->input('id_user_tps3r'),
+				'month' => $request->input('month'),
+				'year' => $request->input('year'),
+			]);
+
+			$store2 = SaldoTPS3R::create([
+				'tanggal_input' => $request->input('tanggal_input'),
+				'saldo_tps3r' => $request->input('saldo_tps3r'),
+				'keterangan' => $request->input('keterangan'),
+			]);
+
+			DB::commit();
+			
+			return response()->json([
+				'data' => [$store, $store2],
+				'message' => 'Berhasil Disimpan',
+			], 200);
+		} catch (\Throwable $th) {
+			DB::rollBack();
 			return $th;
 		}
 	}
