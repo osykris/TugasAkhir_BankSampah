@@ -55,7 +55,7 @@
             <tbody>
                 @php $no = 1; @endphp
                 @foreach($ket_masuk as $ket_masuks)
-                </tr>
+                <tr>
                 <td class="text-center">{{ $no++ }}</td>
                 <td>{{ $ket_masuks->keterangan }}</td>
                 <td style="text-align:right">Rp. {{ number_format($ket_masuks->saldo_tps3r) }}</td>
@@ -63,7 +63,7 @@
                 </tr>
                 @endforeach
                 @foreach($ket_keluar as $ket_keluars)
-                </tr>
+                <tr>
                 <td class="text-center">{{ $no++ }}</td>
                 <td>{{ $ket_keluars->ket }}</td>
                 <td style="text-align:right">Rp. 0</td>
