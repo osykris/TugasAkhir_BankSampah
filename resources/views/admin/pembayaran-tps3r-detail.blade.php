@@ -45,8 +45,8 @@
                                         <td>{{ $bulanan->name_user }}</td>
                                         <td>{{ $bulanan->month }} {{ $bulanan->year }}</td>
                                         <td class="text-center">
-                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_bulanantps3r('{{ $bulanan->id_payment }}')" id="edit-bulanantps3r"><i class="fas fa-edit me-2"></i></button>
-                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_bulanantps3r('{{ $bulanan->id_payment }}')"><i class='fas fa-times'></i></button>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #009dfb;" onclick="edit_bulanantps3r('{{ $bulanan->id }}')" id="edit-bulanantps3r"><i class="fas fa-edit me-2"></i></button>
+                                            <button class="btn btn-sm btn-white me-2" style="color: #E70B0B" onclick="hapus_bulanantps3r('{{ $bulanan->id }}')"><i class='fas fa-times'></i></button>
                                         </td>
                                     </tr>
                                     @endforeach

@@ -31,7 +31,7 @@ class PembayaranTPS3RController extends Controller
 			if ($id != null) {
             $bulanans = DB::table('tps3r_pembayarans')
                 ->join('tps3r_users', 'tps3r_pembayarans.tps3r_user_id', '=', 'tps3r_users.id')
-                ->select('tps3r_pembayarans.*', 'tps3r_users.*')
+                ->select('tps3r_pembayarans.id', 'tps3r_users.name_user', 'tps3r_pembayarans.month', 'tps3r_pembayarans.year')
                 ->where('tps3r_pembayarans.tps3r_user_id', $id)
                 ->get();
             return view('admin.pembayaran-tps3r-detail', ['bulanans' => $bulanans, 'id'=>$id]);
@@ -65,8 +65,8 @@ class PembayaranTPS3RController extends Controller
 	public function edit(Request $request)
 	{
 		try {
-			$id_pembayarantps3r = $request->input('id_payment');
-			$penerima = PembayaranTPS3R::where('id_payment', $id_pembayarantps3r)->first();
+			$id_pembayarantps3r = $request->input('id');
+			$penerima = PembayaranTPS3R::where('id', $id_pembayarantps3r)->first();
 
 			return response()->json([
 				'data' => $penerima,
@@ -101,7 +101,7 @@ class PembayaranTPS3RController extends Controller
 	public function delete(Request $request)
 	{
 		try {
-			$id = $request->input('id_payment');
+			$id = $request->input('id');
 
 			return response()->json([
 				'data' => $id,
@@ -115,8 +115,8 @@ class PembayaranTPS3RController extends Controller
 	public function destroy(Request $request)
 	{
 		try {
-			$id = $request->input('id_payment');
-			PembayaranTPS3R::where('id_payment', $id)->delete();
+			$id = $request->input('id');
+			PembayaranTPS3R::where('id', $id)->delete();
 
 			return response()->json([
 				'data' => $id,
