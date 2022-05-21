@@ -30,6 +30,7 @@
                         </a>
                         <h4 class="font-weight-normal" style="color: #071C4D;"><span class="font-weight-bold">Terima Kasih Telah Mendaftar</span></h4>
                         <p class="text-muted">Sebelum memulai, dapatkah Anda memverifikasi alamat email Anda dengan mengklik tautan yang baru saja kami kirimkan melalui email kepada Anda? Jika Anda tidak menerima email tersebut, kami akan dengan senang hati mengirimkan email lain kepada Anda.</p>
+                        <p class="text-muted" style="color: #071C4D; font-weight:bold;">Note: Apabila anda tetap tidak menemukan email baru, coba cek pada menu Spam.</p>
 
                         @if (session('status') == 'verification-link-sent')
                         <p style="color: #071C4D;">
