@@ -1465,3 +1465,30 @@ $('#add-payment-tps3r').click(function() {
     $("#form-paytps3r")[0].reportValidity();
   }
 });
+
+$('#add-userdaftartps3r').click(function() {
+  if ($("#form-userdaftartps3r")[0].checkValidity()) {
+    var formdata = new FormData(document.getElementById("form-userdaftartps3r"));
+
+    $.ajax({
+      type: "POST",
+      url: "/add-userdaftartps3r/save",
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      data: formdata,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        console.log(response);
+        $('#form-userdaftartps3r')[0].reset();
+        $('#close-userdaftartps3r').click();
+        window.location.reload();
+      }
+    });
+
+  } else {
+    $("#form-userdaftartps3r")[0].reportValidity();
+  }
+});

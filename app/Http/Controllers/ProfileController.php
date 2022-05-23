@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\UserTPS3R;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,9 @@ class ProfileController extends Controller
     }
     
     public function index(){
-        return view('nasabah.profile');
+        $usertps3rs = UserTPS3R::all();
+        return view('nasabah.profile', compact('usertps3rs'));
+        // return view('nasabah.profile');
     }
 
     public function update(Request $request)

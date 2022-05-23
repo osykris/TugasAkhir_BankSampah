@@ -1,5 +1,10 @@
 @extends('layouts.app-dashboard')
 @section('content')
+
+<?php
+$trigger_tps3r = 0;
+?>
+
 <section class="section">
     <div class="section-header">
         <h1>Profile</h1>
@@ -24,12 +29,28 @@
                         </div>
                         Alamat : {{ Auth::user()->alamat_lengkap }}, {{ Auth::user()->desa }}, {{ Auth::user()->kecamatan }}, {{ Auth::user()->kabupaten }}<br />
                         No. Telp : {{ Auth::user()->nohp }}<br />
-                        Email : {{ Auth::user()->email }} 
+                        Email : {{ Auth::user()->email }}
                         <hr>
-                        Bank : {{ Auth::user()->bank }}  <br/>
-                        No. Rekening : {{ Auth::user()->norek }} 
+                        Bank : {{ Auth::user()->bank }} <br />
+                        No. Rekening : {{ Auth::user()->norek }}
                     </div>
                 </div>
+
+                @foreach($usertps3rs as $usertps3r)
+                @if(Auth::user()->nohp == $usertps3r->phone)
+                <?php
+                $trigger_tps3r = 1;
+                ?>
+                @endif
+                @endforeach
+
+                @if($trigger_tps3r == 1)
+                <p style="color: green; font-weight:bold;">*Sudah Terdaftar Pengguna TPS3R</p>
+                @else
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    Daftar TPS3R
+                </button>
+                @endif
             </div>
             <div class="col-12 col-md-12 col-lg-7">
                 <div class="card">
@@ -138,4 +159,55 @@
         </div>
     </div>
 </section>
+
+<!-- Modal Daftar TPS3R -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Daftar TPS3R</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="form-userdaftartps3r">
+                    <div class="form-group">
+                        <label for="name_user">Nama Pengguna</label>
+                        <input type="text" class="form-control" value="{{ Auth::user()->name }}" placeholder="{{ Auth::user()->name }}" name="name_user" id="name_user" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="full_address">Alamat Lengkap</label>
+                        <input type="text" class="form-control" value="{{ Auth::user()->alamat_lengkap }}" placeholder="{{ Auth::user()->alamat_lengkap }}" name="full_address" id="full_address" readonly>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="village">Desa</label>
+                            <input type="text" class="form-control" value="{{ Auth::user()->desa }}" placeholder="{{ Auth::user()->desa }}" name="village" id="village" readonly>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="district">Kecamatan</label>
+                            <input type="text" class="form-control" value="{{ Auth::user()->kecamatan }}" placeholder="{{ Auth::user()->kecamatan }}" name="district" id="district" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-6">
+                            <label for="city">Kabupaten</label>
+                            <input type="text" class="form-control" value="{{ Auth::user()->kabupaten }}" placeholder="{{ Auth::user()->kabupaten }}" name="city" id="city" readonly>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="text" class="form-control" value="{{ Auth::user()->nohp }}" placeholder="{{ Auth::user()->nohp }}" name="phone" id="phone" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-userdaftartps3r">Tutup</button>
+                <button type="button" class="btn btn-primary" id="add-userdaftartps3r">Daftar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

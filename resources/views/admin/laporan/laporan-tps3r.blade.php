@@ -29,7 +29,7 @@
                             <div class="col-3">
                                 <div class="mb-3">
                                     <div class="form-group">
-                                        <input type="text" id="tps3r_date" name="date_tpsr" class="form-control">
+                                        <input type="text" id="tps3r_date" name="date" class="form-control">
                                     </div>
                                 </div>
                             </div>

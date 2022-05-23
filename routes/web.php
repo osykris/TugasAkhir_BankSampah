@@ -45,6 +45,9 @@ Route::get('/artikels/detail/{id}', 'App\Http\Controllers\ArtikelController@deta
 Route::get('/produk', 'App\Http\Controllers\ProdukDaurUlangController@render');
 Route::get('cari', 'App\Http\Controllers\ProdukDaurUlangController@cari');
 
+//daftar pengguna tps3r
+Route::post('/add-daftartps3r/save', 'App\Http\Controllers\DaftarTPS3RController@store');
+
 //auth route for both 
 Route::group(['middleware' => ['auth']], function () {
 
@@ -199,6 +202,9 @@ Route::group(['middleware' => ['auth']], function () {
     //laporan transaksi
     Route::get('/laporan-nasabah', 'App\Http\Controllers\LaporanController@transaksiReport')->name('laporan-nasabah');
     Route::get('/laporan-nasabah/pdf/{daterange}', 'App\Http\Controllers\LaporanController@transaksiReportPdf')->name('report.nasabah_pdf');
+
+    //daftar tps3r
+    Route::post('/add-userdaftartps3r/save', 'App\Http\Controllers\Nasabah\DaftarTPS3RController@store');
 });
 
 
