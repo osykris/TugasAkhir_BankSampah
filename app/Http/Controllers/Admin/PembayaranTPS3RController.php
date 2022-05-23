@@ -137,16 +137,17 @@ class PembayaranTPS3RController extends Controller
 				'year' => $request->input('year'),
 			]);
 
-			$store2 = SaldoTPS3R::create([
-				'tanggal_input' => $request->input('tanggal_input'),
-				'saldo_tps3r' => $request->input('saldo_tps3r'),
-				'keterangan' => $request->input('keterangan'),
-			]);
+			// $store2 = SaldoTPS3R::create([
+			// 	'tanggal_input' => $request->input('tanggal_input'),
+			// 	'saldo_tps3r' => $request->input('saldo_tps3r'),
+			// 	'keterangan' => $request->input('keterangan'),
+			// ]);
 
 			DB::commit();
 			
 			return response()->json([
-				'data' => [$store, $store2],
+				// 'data' => [$store, $store2],
+				'data' => $store,
 				'message' => 'Berhasil Disimpan',
 			], 200);
 		} catch (\Throwable $th) {

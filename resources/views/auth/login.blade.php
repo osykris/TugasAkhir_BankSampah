@@ -20,6 +20,19 @@
 </head>
 
 <body>
+  @if ($message = Session::get('success'))
+  <div class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" style="outline: none;">x</button>
+    <strong>{{ $message }}</strong>
+  </div>
+  @endif
+
+  @if ($message = Session::get('error'))
+  <div class="alert alert-danger alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" style="outline: none;">x</button>
+    <strong>{{ $message }}</strong>
+  </div>
+  @endif
   <div id="app">
     <section class="section">
       <div class="d-flex flex-wrap align-items-stretch">
@@ -83,6 +96,12 @@
               </div>
             </form>
 
+            <div class="mt-5 form-group text-right">
+              <button style="background-color:#FF9E53; color:white;" class="btn btn-lg btn-icon icon-right" data-toggle="modal" data-target="#myModal">
+                Daftar Pengguna TPS3R
+              </button>
+            </div>
+
             <div class="text-center mt-5 text-small">
               2022 Copyright Semanding • Seluruh Hak Cipta • Dibuat oleh 💙 Mahasiswa Politeknik Negeri Malang
             </div>
@@ -100,6 +119,58 @@
         </div>
       </div>
     </section>
+  </div>
+
+  <!-- Modal Daftar Pengguna TPS3R -->
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Daftar Pengguna TPS3R</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/add-daftartps3r/save" method="post">
+            {{ csrf_field() }}
+            <div class="form-group">
+              <label for="name_user">Nama Pengguna</label>
+              <input type="text" class="form-control" placeholder="Masukkan Nama" name="name_user" id="name_user">
+            </div>
+            <div class="form-group">
+              <label for="full_address">Alamat Lengkap</label>
+              <input type="text" class="form-control" placeholder="Masukkan Alamat Lengkap" name="full_address" id="full_address">
+            </div>
+            <div class="form-group">
+              <label>Desa</label>
+              <select class="form-control selectric" name="village" id="village">
+                <option value="Pilih Desa" disabled selected>Pilih Desa</option>
+                <option value="Bangle">Bangle</option>
+                <option value="Gaprang">Gaprang</option>
+                <option value="Gogodeso">Gogodeso</option>
+                <option value="Jatinom">Jatinom</option>
+                <option value="Karangsono">Karangsono</option>
+                <option value="Kuningan">Kuningan</option>
+                <option value="Minggirsari">Minggirsari</option>
+                <option value="Papungan">Papungan</option>
+                <option value="Satreyan">Satreyan</option>
+                <option value="Sawentar">Sawentar</option>
+                <option value="Tlogo">Tlogo</option>
+              </select>
+            </div>
+            <input type="hidden" class="form-control" value="Kanigoro" placeholder="Masukkan Kecamatan" name="district" id="district">
+            <input type="hidden" class="form-control" value="Blitar" placeholder="Masukkan Kabupaten" name="city" id="city">
+            <div class="form-group">
+              <label for="phone">No. Telp</label>
+              <input type="text" class="form-control" placeholder="Masukkan No. Telp" name="phone" id="phone">
+            </div>
+            <!-- <input type="submit" value="Simpan Data"> -->
+            <button type="submit" style="background-color:#FF9E53; color:white;" class="btn btn-icon">Daftar</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- General JS Scripts -->
