@@ -51,6 +51,7 @@ class ProdukDaurUlangController extends Controller
 				'deskripsi' => $request->input('deskripsi'),
 				'harga' => $request->input('harga'),
 				'gambar' => $nama_gambar,
+				'link' => $request->input('link'),
 			]);
 
 			DB::commit();
@@ -99,6 +100,7 @@ class ProdukDaurUlangController extends Controller
 					'deskripsi' => $request->input('deskripsi_edit'),
 					'harga' => $request->input('harga_edit'),
 					'gambar' => $nama_gambar,
+					'link' => $request->input('link_edit'),
 				];
 
 				ProdukDaurUlang::where('id', $id)->update($data);
@@ -109,6 +111,7 @@ class ProdukDaurUlangController extends Controller
 					'nama' => $request->input('nama_edit'),
 					'deskripsi' => $request->input('deskripsi_edit'),
 					'harga' => $request->input('harga_edit'),
+					'link' => $request->input('link_edit'),
 				];
 
 				ProdukDaurUlang::where('id', $id)->update($data);

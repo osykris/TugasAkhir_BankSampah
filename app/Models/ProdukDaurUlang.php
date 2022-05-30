@@ -10,7 +10,7 @@ class ProdukDaurUlang extends Model
     protected $table = 'produk_daur_ulangs';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'user_id', 'nama', 'deskripsi', 'harga', 'gambar'
+        'user_id', 'nama', 'deskripsi', 'harga', 'gambar', 'link'
     ];
     public $timestamps = false;
 
