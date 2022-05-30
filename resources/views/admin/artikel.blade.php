@@ -73,15 +73,15 @@
                 <form id="form-artikel">
                     <div class="form-group">
                         <label for="title">Judul</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Judul Artikel" name="title" id="title">
+                        <input type="text" class="form-control" placeholder="Masukkan Judul Artikel" name="title" id="title"  required>
                     </div>
                     <div class="form-group">
                         <label for="content">Konten</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Isi Artikel" name="content" id="content">
+                        <input type="text" class="form-control" placeholder="Masukkan Isi Artikel" name="content" id="content"  required>
                     </div>
                     <div class="form-group">
                         <label for="gambar_artikel">Gambar</label>
-                        <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar_artikel" id="gambar_artikel" accept=".jpeg,.jpg,.png">
+                        <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar_artikel" id="gambar_artikel" accept=".jpeg,.jpg,.png"  required>
                     </div>
                 </form>
             </div>

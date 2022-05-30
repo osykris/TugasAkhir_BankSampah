@@ -79,15 +79,15 @@
                 <form id="form-tps3r_keluar">
                     <div class="form-group">
                         <label for="tgl_masuk">Tanggal Pengeluaran</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tgl_masuk" id="tgl_masuk">
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tgl_masuk" id="tgl_masuk"  required>
                     </div>
                     <div class="form-group">
                         <label for="ket">Keterangan</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="ket" id="ket">
+                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="ket" id="ket"  required>
                     </div>
                     <div class="form-group">
                         <label for="saldo_tps3r_keluar">Saldo Keluar</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Pengeluaran" name="saldo_tps3r_keluar" id="saldo_tps3r_keluar">
+                        <input type="text" class="form-control" placeholder="Masukkan Pengeluaran" name="saldo_tps3r_keluar" id="saldo_tps3r_keluar"  required>
                     </div>
                 </form>
             </div>

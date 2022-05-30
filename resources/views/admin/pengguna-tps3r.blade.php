@@ -71,11 +71,11 @@
                 <form id="form-usertps3r">
                     <div class="form-group">
                         <label for="name_user">Nama Pengguna</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Nama" name="name_user" id="name_user">
+                        <input type="text" class="form-control" placeholder="Masukkan Nama" name="name_user" id="name_user" required>
                     </div>
                     <div class="form-group">
                         <label for="full_address">Alamat Lengkap</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Alamat Lengkap" name="full_address" id="full_address">
+                        <input type="text" class="form-control" placeholder="Masukkan Alamat Lengkap" name="full_address" id="full_address" required>
                     </div>
                     <div class="form-group">
                       <label>Desa</label>
@@ -98,7 +98,7 @@
                     <input type="hidden" class="form-control" value="Blitar" placeholder="Masukkan Kabupaten" name="city" id="city">
                     <div class="form-group">
                         <label for="phone">No. Telp</label>
-                        <input type="text" class="form-control" placeholder="Masukkan No. Telp" name="phone" id="phone">
+                        <input type="text" class="form-control" placeholder="Masukkan No. Telp" name="phone" id="phone" required>
                     </div>
                 </form>
             </div>

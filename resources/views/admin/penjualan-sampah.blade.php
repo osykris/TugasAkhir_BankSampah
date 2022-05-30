@@ -76,15 +76,15 @@
                 <form id="form-jualsampah">
                     <div class="form-group">
                         <label for="date_input">Tanggal Penjualan</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal Penjualan" name="date_input" id="date_input">
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal Penjualan" name="date_input" id="date_input" required>
                     </div>
                     <div class="form-group">
                         <label for="saldo_penjualan">Saldo</label>
-                        <input type="text" class="form-control" placeholder="Masukkan saldo" name="saldo_penjualan" id="saldo_penjualan">
+                        <input type="text" class="form-control" placeholder="Masukkan saldo" name="saldo_penjualan" id="saldo_penjualan" required>
                     </div>
                     <div class="form-group">
                         <label for="description">Keterangan</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="description" id="description">
+                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="description" id="description" required>
                     </div>
                 </form>
             </div>
