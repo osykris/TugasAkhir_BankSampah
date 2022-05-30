@@ -577,6 +577,7 @@ function edit_product(id) {
       $('#deskripsi_edit').val(response.data.deskripsi);
       $('#harga_edit').val(response.data.harga);
       $('#gambar_edit').val(response.data.gambar);
+      $('#link_edit').val(response.data.link);
     },
   });
 }

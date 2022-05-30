@@ -90,6 +90,10 @@
                         <label for="gambar">Gambar</label>
                         <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar" id="gambar" accept=".jpeg,.jpg,.png" required>
                     </div>
+                    <div class="form-group">
+                        <label for="link">Link</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Link Produk" name="link" id="link" required>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -128,6 +132,10 @@
                     <div class="form-group">
                         <label for="gambar_edit">Gambar</label>
                         <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar_edit" id="gambar_edit" accept=".jpeg,.jpg,.png">
+                    </div>
+                    <div class="form-group">
+                        <label for="link_edit">Link</label>
+                        <input type="text" class="form-control" placeholder="Masukkan Link Produk" name="link_edit" id="link_edit">
                     </div>
                 </form>
             </div>
