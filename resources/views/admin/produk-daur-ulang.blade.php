@@ -76,19 +76,19 @@
                 <form id="form-product">
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama" id="nama">
+                        <input type="text" class="form-control" placeholder="Masukkan Nama Produk" name="nama" id="nama" required>
                     </div>
                     <div class="form-group">
                         <label for="deskripsi">Deskripsi</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Deskripsi Produk" name="deskripsi" id="deskripsi">
+                        <input type="text" class="form-control" placeholder="Masukkan Deskripsi Produk" name="deskripsi" id="deskripsi" required>
                     </div>
                     <div class="form-group">
                         <label for="harga">Harga</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Harga" name="harga" id="harga">
+                        <input type="text" class="form-control" placeholder="Masukkan Harga" name="harga" id="harga" required>
                     </div>
                     <div class="form-group">
                         <label for="gambar">Gambar</label>
-                        <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar" id="gambar" accept=".jpeg,.jpg,.png">
+                        <input type="file" class="form-control" placeholder="Masukkan Gambar" name="gambar" id="gambar" accept=".jpeg,.jpg,.png" required>
                     </div>
                 </form>
             </div>

@@ -77,15 +77,15 @@
                 <form id="form-tps3r">
                     <div class="form-group">
                         <label for="tanggal_input">Tanggal Input</label>
-                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tanggal_input" id="tanggal_input">
+                        <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tanggal_input" id="tanggal_input"  required>
                     </div>
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="keterangan" id="keterangan">
+                        <input type="text" class="form-control" placeholder="Masukkan Keterangan" name="keterangan" id="keterangan"  required>
                     </div>
                     <div class="form-group">
                         <label for="saldo_tps3r">Saldo</label>
-                        <input type="text" class="form-control" placeholder="Masukkan saldo" name="saldo_tps3r" id="saldo_tps3r">
+                        <input type="text" class="form-control" placeholder="Masukkan saldo" name="saldo_tps3r" id="saldo_tps3r"  required>
                     </div>
                 </form>
             </div>
